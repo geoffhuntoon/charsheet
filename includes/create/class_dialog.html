@@ -1,0 +1,43 @@
+<paper-dialog id="class-dialog" with-backdrop always-on-top>
+  <h1 id="class-title"></h1>
+
+  <dom-bind>
+    <template>
+      <paper-tabs id="class-tabs" class="dialog-tabs" attr-for-selected="name" selected="{{selected}}">
+        <paper-tab name="general">General</paper-tab>
+        <paper-tab name="adventures">Adventures</paper-tab>
+        <paper-tab name="characteristics">Characteristics</paper-tab>
+        <paper-tab name="alignment">Alignment</paper-tab>
+        <paper-tab name="religion">Religion</paper-tab>
+        <paper-tab name="background">Background</paper-tab>
+        <paper-tab name="races">Races</paper-tab>
+        <paper-tab name="other_classes">Other Classes</paper-tab>
+        <paper-tab name="role">Role</paper-tab>
+        <paper-tab name="rule_info">Rule Info</paper-tab>
+        <paper-tab name="class_skills">Skills</paper-tab>
+        <paper-tab name="class_features">Feats</paper-tab>
+        <paper-tab name="ex_class">Ex-Class</paper-tab>
+      </paper-tabs>
+
+      <iron-pages id="class-pages" attr-for-selected="class" selected="{{selected}}">
+        <div class="general" style="height: 200px; overflow: auto;"></div>
+        <div class="adventures" style="height: 200px; overflow: auto;"></div>
+        <div class="characteristics" style="height: 200px; overflow: auto;"></div>
+        <div class="alignment" style="height: 200px; overflow: auto;"></div>
+        <div class="religion" style="height: 200px; overflow: auto;"></div>
+        <div class="background" style="height: 200px; overflow: auto;"></div>
+        <div class="races" style="height: 200px; overflow: auto;"></div>
+        <div class="other_classes" style="height: 200px; overflow: auto;"></div>
+        <div class="role" style="height: 200px; overflow: auto;"></div>
+        <div class="rule_info" style="height: 200px; overflow: auto;"></div>
+        <div class="class_skills" style="height: 200px; overflow: auto;"></div>
+        <div class="class_features" style="height: 200px; overflow: auto;"></div>
+        <div class="ex_class" style="height: 200px; overflow: auto;"></div>
+      </iron-pages>
+    </template>
+  </dom-bind>
+
+  <div class="buttons">
+    <paper-button class="nav-button" dialog-dismiss>Done</paper-button>
+  </div>
+</paper-dialog>

@@ -1,0 +1,39 @@
+<paper-dialog id="race-dialog" with-backdrop always-on-top>
+  <h1 id="race-title"></h1>
+
+  <dom-bind>
+    <template>
+      <paper-tabs id="race-tabs" class="dialog-tabs" attr-for-selected="name" selected="{{selected}}">
+        <paper-tab name="general">General</paper-tab>
+        <paper-tab name="personality">Personality</paper-tab>
+        <paper-tab name="physicality">Physicality</paper-tab>
+        <paper-tab name="relations">Relations</paper-tab>
+        <paper-tab name="alignment">Alignment</paper-tab>
+        <paper-tab name="lands">Lands</paper-tab>
+        <paper-tab name="religion">Religion</paper-tab>
+        <paper-tab name="language">Language</paper-tab>
+        <paper-tab name="names">Names</paper-tab>
+        <paper-tab name="adventurers">Adventurers</paper-tab>
+        <paper-tab name="racial_traits">Racial Traits</paper-tab>
+      </paper-tabs>
+
+      <iron-pages id="race-pages" attr-for-selected="class" selected="{{selected}}">
+        <div class="general" style="height: 200px; overflow: auto;"></div>
+        <div class="personality" style="height: 200px; overflow: auto;"></div>
+        <div class="physicality" style="height: 200px; overflow: auto;"></div>
+        <div class="relations" style="height: 200px; overflow: auto;"></div>
+        <div class="alignment" style="height: 200px; overflow: auto;"></div>
+        <div class="lands" style="height: 200px; overflow: auto;"></div>
+        <div class="religion" style="height: 200px; overflow: auto;"></div>
+        <div class="language" style="height: 200px; overflow: auto;"></div>
+        <div class="names" style="height: 200px; overflow: auto;"></div>
+        <div class="adventurers" style="height: 200px; overflow: auto;"></div>
+        <div class="racial_traits" style="height: 200px; overflow: auto;"></div>
+      </iron-pages>
+    </template>
+  </dom-bind>
+
+  <div class="buttons">
+    <paper-button class="nav-button" dialog-dismiss>Done</paper-button>
+  </div>
+</paper-dialog>

@@ -1,0 +1,42 @@
+<div id="create">
+  <dom-bind>
+    <template>
+      <paper-tabs id="create-tabs" attr-for-selected="name" selected="{{selected}}">
+        <paper-tab name="general_info">General</paper-tab>
+        <paper-tab name="skills">Skills</paper-tab>
+        <paper-tab name="feats">Feats</paper-tab>
+        <paper-tab name="equipment">Equipment</paper-tab>
+        <paper-tab name="spells">Spells</paper-tab>
+      </paper-tabs>
+
+      <iron-pages id="create-pages" attr-for-selected="class" selected="{{selected}}">
+        <div class="general_info"></div>
+        <div class="skills"></div>
+        <div class="feats"></div>
+        <div class="equipment"></div>
+        <div class="spells"></div>
+      </iron-pages>
+    </template>
+  </dom-bind>
+</div>
+
+<script>
+    function loadContent(tab) {
+        let content = $('div.' + tab);
+        content.hide();
+        $.ajax({
+            url: '/includes/create/' + tab + '.html',
+            success: function (data) {
+                content.html(data);
+                content.fadeIn(500);
+            }
+        });
+    }
+
+    $('#create-tabs').on('selected-changed', function () {
+        loadContent(this.selected);
+    });
+
+    // Initially load General page
+    document.getElementById('create-tabs').selected = 'general_info';
+</script>

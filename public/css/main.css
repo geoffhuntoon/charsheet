@@ -1,0 +1,108 @@
+/* Base and element styles */
+:root {
+    --primary-background: #ADCCFF;
+    --button-background: #E5EFFF;
+    --dialog-background: #ADDDFF;
+    --paper-tab-ink: blue;
+    --paper-button-ink-color: blue;
+    --paper-tabs-selection-bar-color: blue;
+}
+
+body {
+    font-family: "MedievalSharp", serif;
+    margin: 10px;
+    background: var(--primary-background);
+}
+
+h1 {
+    margin: 35px auto 20px auto;
+    width: 70%;
+    text-align: center;
+}
+
+paper-button {
+    font-family: "MedievalSharp", serif;
+    font-weight: bold;
+    text-transform: capitalize;
+    background: var(--button-background);
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px 0;
+}
+
+paper-tabs {
+    width: 80%;
+    margin: 15px auto 0 auto;
+    background: var(--button-background);
+    border-radius: 5px 5px 0 0;
+    box-shadow: 5px 5px 5px 0;
+}
+
+paper-dropdown-menu {
+    width: 88%;
+}
+
+paper-listbox {
+    width: 200px;
+    height: 250px;
+}
+
+paper-dialog {
+    font-family: "MedievalSharp", serif;
+    font-weight: bold;
+    width: 80%;
+    height: 70%;
+    border-radius: 5px;
+    background: var(--dialog-background);
+}
+
+/* Navigation buttons */
+#nav-buttons {
+    margin: 0 auto;
+    width: 30%;
+}
+
+#nav-buttons a {
+    text-decoration: none;
+}
+
+.nav-button {
+    width: 30%;
+    color: black;
+}
+
+.buttons {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+}
+
+.dialog-tabs {
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* Form styles */
+.form {
+    font-family: "MedievalSharp", serif;
+    width: 80%;
+    margin: 0 auto;
+    background: var(--button-background);
+    border-radius: 0 0 5px 5px;
+    box-shadow: 5px 5px 5px 0;
+}
+
+.form h2 {
+    padding: 20px;
+}
+
+.column {
+    display: inline-block;
+    width: 40%;
+    padding: 5px 20px;
+}
+
+.input {
+    width: 95%;
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>D&D 3.5E Character Sheet</title>
+  <link type="image/x-icon" rel="shortcut icon" href="img/favicon.ico"/>
+
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=MedievalSharp"/>
+
+  <!-- Main CSS -->
+  <link type="text/css" rel="stylesheet" href="css/main.css"/>
+
+  <!-- Prevent FOUC -->
+  <style type="text/css">
+    .no-fouc {
+      display: none;
+    }
+  </style>
+
+  <!-- Web Components/Polymer -->
+  <script type="module" src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script type="module" src="../node_modules/@polymer/polymer/lib/elements/dom-bind.js"></script>
+  <script type="module" src="../node_modules/@polymer/paper-input/paper-input.js"></script>
+  <script type="module" src="../node_modules/@polymer/paper-dropdown-menu/paper-dropdown-menu.js"></script>
+  <script type="module" src="../node_modules/@polymer/paper-listbox/paper-listbox.js"></script>
+  <script type="module" src="../node_modules/@polymer/paper-item/paper-item.js"></script>
+  <script type="module" src="../node_modules/@polymer/paper-button/paper-button.js"></script>
+  <script type="module" src="../node_modules/@polymer/paper-tabs/paper-tabs.js"></script>
+  <script type="module" src="../node_modules/@polymer/iron-pages/iron-pages.js"></script>
+  <script type="module" src="../node_modules/@polymer/iron-form/iron-form.js"></script>
+  <script type="module" src="../node_modules/@polymer/paper-dialog/paper-dialog.js"></script>
+  <script type="module" src="../node_modules/@polymer/paper-icon-button/paper-icon-button.js"></script>
+  <script type="module" src="../node_modules/@polymer/iron-icons/iron-icons.js"></script>
+  <script type="module" src="../node_modules/@polymer/iron-icon/iron-icon.js"></script>
+  <script type="module" src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
+
+</head>
+
+<body class="no-fouc">
+
+  <h1 id="title">Dungeons and Dragons 3.5 Edition <br/> Character Sheet Generator and Reference Guide</h1>
+
+  <nav id="nav-buttons">
+    <a href="../includes" tabindex="-1">
+      <paper-button class="nav-button">About</paper-button>
+    </a>
+    <a href="../includes/create.html" tabindex="-1">
+      <paper-button class="nav-button">Create</paper-button>
+    </a>
+    <a href="../includes" tabindex="-1">
+      <paper-button class="nav-button">References</paper-button>
+    </a>
+  </nav>
+
+  <div id="content">
+
+  </div>
+
+</body>
+</html>
+
+<script>
+    $(document).ready(() => {
+        // Initial fadeIn and FOUC handling
+        let header = $('#title, #nav-buttons');
+        header.hide();
+        $('.no-fouc').removeClass('no-fouc');
+        header.fadeIn(1000);
+
+        // Click handler to cross-fade content
+        $('#nav-buttons').find('a').click(function(e) {
+            e.preventDefault();
+            let url = $(this).attr('href');
+            let content = $('#content');
+            content.hide();
+            $.ajax({
+                url: url,
+                success: function(data) {
+                    content.html(data);
+                    content.fadeIn(500);
+                    $('#title').slideUp(1000);
+                }
+            });
+        });
+    });
+</script>

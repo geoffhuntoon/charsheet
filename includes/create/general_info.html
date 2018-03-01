@@ -1,0 +1,111 @@
+<div id="general-form" class="form">
+  <h2>General Information and Ability Scores</h2>
+
+  <iron-form id="general">
+    <form>
+      <div class="column">
+        <paper-input class="input" name="character-name" label="Character Name"
+                     always-float-label maxlength="200"></paper-input>
+
+        <div class="input">
+          <paper-dropdown-menu id="race" name="race" label="Race" always-float-label
+                               noink no-animations dynamic-align>
+            <paper-listbox slot="dropdown-content" attr-for-selected="name" selected="human">
+              <paper-item name="human">Human</paper-item>
+              <paper-item name="dwarf">Dwarf</paper-item>
+              <paper-item name="elf">Elf</paper-item>
+              <paper-item name="gnome">Gnome</paper-item>
+              <paper-item name="half-elf">Half-Elf</paper-item>
+              <paper-item name="half-orc">Half-Orc</paper-item>
+              <paper-item name="halfling">Halfling</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
+          <paper-icon-button icon="icons:help" onclick="_raceDialog()"></paper-icon-button>
+        </div>
+      </div>
+
+      <div class="column">
+        <paper-input class="input" name="player-name" label="Player Name"
+                     always-float-label maxlength="200"></paper-input>
+
+        <div class="input">
+          <paper-dropdown-menu id="char-class" name="class" label="(First) Class" always-float-label
+                               noink no-animations dynamic-align>
+            <paper-listbox slot="dropdown-content" attr-for-selected="name" selected="barbarian">
+              <paper-item name="barbarian">Barbarian</paper-item>
+              <paper-item name="bard">Bard</paper-item>
+              <paper-item name="cleric">Cleric</paper-item>
+              <paper-item name="druid">Druid</paper-item>
+              <paper-item name="fighter">Fighter</paper-item>
+              <paper-item name="monk">Monk</paper-item>
+              <paper-item name="paladin">Paladin</paper-item>
+              <paper-item name="ranger">Ranger</paper-item>
+              <paper-item name="rogue">Rogue</paper-item>
+              <paper-item name="sorcerer">Sorcerer</paper-item>
+              <paper-item name="wizard">Wizard</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
+          <paper-icon-button icon="icons:help" onclick="_classDialog()"></paper-icon-button>
+        </div>
+      </div>
+    </form>
+  </iron-form>
+  <div id="general-dialog"></div>
+</div>
+
+<script>
+    function _raceDialog() {
+        let race = document.getElementById('race').selectedItemLabel;
+        $.ajax({
+            url: '/includes/create/race_dialog.html?raceName=' + race,
+            success: function (data) {
+                $('#general-dialog').html(data);
+                document.getElementById('race-tabs').selected = 'general';
+                document.getElementById('race-pages').selected = 'general';
+
+                $.ajax({
+                    url: '/races/' + race,
+                    success: function (body) {
+                        let bodyInfo = body[0];
+                        document.getElementById('race-title').innerText = bodyInfo['name'];
+                        Object.keys(bodyInfo).forEach(function(key) {
+                            let div = document.getElementsByClassName(key);
+                            if (div[0] !== undefined) {
+                                div[0].innerHTML = bodyInfo[key];
+                            }
+                        });
+                        document.getElementById('race-dialog').open();
+                    }
+                });
+            }
+        });
+    }
+
+    function _classDialog() {
+        let charClass = document.getElementById('char-class').selectedItemLabel;
+        $.ajax({
+            url: '/includes/create/class_dialog.html?className=' + charClass,
+            success: function (data) {
+                $('#general-dialog').html(data);
+                document.getElementById('class-tabs').selected = 'general';
+                document.getElementById('class-pages').selected = 'general';
+
+                $.ajax({
+                    url: '/classes/' + charClass,
+                    success: function (body) {
+                        let bodyInfo = body[0];
+                        document.getElementById('class-title').innerText = bodyInfo['name'];
+                        Object.keys(bodyInfo).forEach(function(key) {
+                            let div = document.getElementsByClassName(key);
+                            if (div[0] !== undefined) {
+                                div[0].innerHTML = bodyInfo[key];
+                            }
+                        });
+                        document.getElementById('class-dialog').open();
+                    }
+                });
+            }
+        });
+    }
+
+</script>
