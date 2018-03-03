@@ -22,6 +22,26 @@
           </paper-dropdown-menu>
           <paper-icon-button icon="icons:help" onclick="_raceDialog()"></paper-icon-button>
         </div>
+
+        <paper-input class="small-input" name="level" label="(First Class) Level" always-float-label
+                     pattern="^([1-9]|1\d|20)$" auto-validate error-message="Level must be 1-20"></paper-input>
+
+        <div class="small-input">
+          <paper-dropdown-menu id="alignment" name="alignment" label="Alignment" always-float-label
+                               noink no-animations dynamic-align>
+            <paper-listbox slot="dropdown-content" attr-for-selected="name" selected="lawful-good">
+              <paper-item name="lawful-good">Lawful Good</paper-item>
+              <paper-item name="neutral-good">Neutral Good</paper-item>
+              <paper-item name="chaotic-good">Chaotic Good</paper-item>
+              <paper-item name="lawful-neutral">Lawful Neutral</paper-item>
+              <paper-item name="true-neutral">True Neutral</paper-item>
+              <paper-item name="chaotic-neutral">Chaotic Neutral</paper-item>
+              <paper-item name="lawful-evil">Lawful Evil</paper-item>
+              <paper-item name="neutral-evil">Neutral Evil</paper-item>
+              <paper-item name="chaotic-evil">Chaotic Evil</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
+        </div>
       </div>
 
       <div class="column">
@@ -47,6 +67,8 @@
           </paper-dropdown-menu>
           <paper-icon-button icon="icons:help" onclick="_classDialog()"></paper-icon-button>
         </div>
+
+
       </div>
     </form>
   </iron-form>
