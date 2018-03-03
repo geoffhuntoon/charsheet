@@ -34,6 +34,36 @@ INSERT INTO experience VALUES (19, 171000, 22, 11, 0, 0, 7, 4);
 INSERT INTO experience VALUES (20, 190000, 23, 11.5, 0, 1, 7, 5);
 
 
+/*------Religion------*/
+CREATE TABLE religion (
+  id          INT(3) PRIMARY KEY,
+  description TEXT
+);
+
+
+/*------Religion Description------*/
+INSERT INTO religion
+VALUES (1, 'The gods are many. A few, such as Pelor (god of the sun), have grand temples that sponsor mighty processions
+  through the streets on high holy days. Others, such as Erythnul (god of slaughter), have temples only in hidden places
+  or evil lands. While the gods most strongly make their presence felt through their clerics, they also have lay
+  followers who more or less attempt to live up to their deities\' standards. The typical person has a deity whom he
+  considers to be his patron. Still, it is only prudent to be respectful toward and even pray to other deities when the
+  time is right. Before setting out on a journey, a follower of Pelor might leave a small sacrifice at a wayside shrine
+  to Fharlanghn (god of roads) to improve his chances of having a safe journey. As long as one\'s own deity is not at
+  odds with the others in such an act of piety, such simple practices are common. In times of tribulation, however, some
+  people recite dark prayers to evil deities. Such prayers are best muttered under one\'s breath, lest others
+  overhear.<br/><br/>
+  Deities rule the various aspects of human existence: good and evil, law and chaos, life and death, knowledge and
+  nature. In addition, various nonhuman races have racial deities of their own. A character may not be a cleric of a
+  racial deity unless he is of the right race, but he may worship such a deity and live according to that deity\'s
+  guidance. For a deity who is not tied to a particular race (such as Pelor), a cleric\'s race is not an
+  issue.<br/><br/>
+  Deities of certain kinds of monsters are identified in the <i>Monster Manual</i>. Many more deities than those
+  described here or mentioned in the <i>Monster Manual</i> also exist.<br/><br/>
+  Your character may or may not have a patron deity. If you want him or her to have one, consider first the deities most
+  appropriate to the character\'s race, class, and alignment. If a cleric chooses a deity, which one he selects
+  influences his capabilities.');
+
 
 /*------Deities------*/
 CREATE TABLE deities (
@@ -178,3 +208,282 @@ VALUES (1, 'Boccob', 'God of Magic', 'Neutral', 'Knowledge, Magic, Trickery', 'W
    following her guidance. The domains she is associated with are Good, Law, and Protection. The short sword is her
    favored weapon.',
    '/public/img/deities/yondalla.gif');
+
+
+/*------Deities By Race------*/
+CREATE TABLE deities_by_race (
+  id      INT(3) PRIMARY KEY,
+  race    VARCHAR(20),
+  deities VARCHAR(50)
+);
+
+
+/*------Deities By Race Entries------*/
+INSERT INTO deities_by_race
+VALUES (1, 'Human', 'By class and alignment'),
+  (2, 'Dwarf', 'Moradin, or by class and alignment'),
+  (3, 'Elf', 'Corellon Larethian, Ehlonna, or by class and alignment'),
+  (4, 'Gnome', 'Garl Glittergold, Ehlonna, or by class and alignment'),
+  (5, 'Half-Elf', 'Corellon Larethian, Ehlonna, or by class and alignment'),
+  (6, 'Half-Orc', 'Gruumsh, or by class and alignment'),
+  (7, 'Halfling', 'Yondalla, Ehlonna, or by class and alignment');
+
+
+/*------Deities By Class------*/
+CREATE TABLE deities_by_class (
+  id      INT(3) PRIMARY KEY,
+  class   VARCHAR(20),
+  deities VARCHAR(100)
+);
+
+
+/*------Deities By Class Entries------*/
+INSERT INTO deities_by_class
+VALUES (1, 'Barbarian', 'Kord (CG), Obad-Hai (TN), Erythnul (CE)'),
+  (2, 'Bard', 'Pelor (NG), Fharlanghn (TN), Olidammara (CN)'),
+  (3, 'Cleric', 'Any'),
+  (4, 'Druid', 'Obad-Hai (TN)'),
+  (5, 'Fighter', 'Heironeous (LG), Kord (CG), St. Cuthbert (LN), Hextor (LE), Erythnul (CE)'),
+  (6, 'Illusionist', 'Boccob (TN)'),
+  (7, 'Necromancer', 'Wee Jas (LN), Nerull (NE)'),
+  (8, 'Monk', 'Heironeous (LG), St. Cuthbert (LN), Hextor (LE)'),
+  (9, 'Paladin', 'Heironeous (LG)'),
+  (10, 'Ranger', 'Ehlonna (NG), Obad-Hai (TN)'),
+  (11, 'Rogue', 'Olidammara (CN), Nerull (NE), Vecna (NE), Erythnul (CE)'),
+  (12, 'Sorcerer', 'Wee Jas (LN), Boccob (TN), Vecna (NE)'),
+  (13, 'Wizard', 'Wee Jas (LN), Boccob (TN), Vecna (NE)');
+
+
+/*------Alignment------*/
+CREATE TABLE alignment (
+  id          INT(3) PRIMARY KEY,
+  section     VARCHAR(30),
+  description TEXT
+);
+
+
+/*------Alignment Entries------*/
+INSERT INTO alignment
+VALUES (1, 'General',
+        'In the temple of Pelor is an ancient tome. When the temple recruits adventurers for its most sensitive and
+        important quests, each one who wants to participate must kiss the book. Those who are evil in their hearts are
+        blasted by holy power, and even those who are neither good nor evil are stunned. Only those who are good can
+        kiss the tome without hard and are trusted with the temple\'s most important work. Good and evil are not
+        philosophical concepts in the D&D game. They are the forces that define the cosmos.<br/><br/>
+        Devils in human guise stalk the land, tempting people toward evil. Holy clerics use the power of good to protect
+        worshipers. Devotees of evil gods bring ruin on innocents to win the favor of their deities, while trusting that
+        rewards await them in the afterlife. Crusading paladins fearlessly confront evildoers, knowing that this short
+        life is nothing worth clinging to. Warlords turn to whichever supernatural power will help them conquer, and
+        proxies for good and evil gods promise rewards in return for the warlords\' oaths of obedience.<br/><br/>
+        A creature\'s general moral and personal attitudes are represented by its alignment: lawful good, neutral good,
+        chaotic good, lawful neutral, true neutral, chaotic neutral, lawful evil, neutral evil, or chaotic
+        evil.<br/><br/>
+        Choose an alignment for your character, using his or her race and class as a guide. Most player characters are
+        good or neutral rather than evil. In general, evil alignments are for villains and monsters.<br/><br/>
+        Alignment is a tool for developing your character\'s identity. It is not a straitjacket for restricting your
+        character. Each alignment represents a broad range of personality types or personal philosophies, so two lawful
+        good characters can still be quite different from each other. In addition, few people are completely consistent.
+        A lawful good character may have a greedy streak that occasionally tempts him to take something or hoard
+        something he has, even if that\'s not lawful or good behavior. People are also not consistent from day to day.
+        A good character can lose his temper, a neutral character can be inspired to perform a noble act, and so
+        on.<br/><br/>
+        Choosing an alignment for your character means stating your intent to play that character a certain way. If your
+        character acts in a way more appropriate to another alignment, the DM may decide that his alignment has changed
+        to match his actions.'),
+  (2, 'Typical Alignments',
+   'Creatures and members of classes shown in <i>italic type</i> in the Creature, Race, and Class Alignments table are
+   always of the indicated alignment. Except for paladins, they are born into that alignment. It is inherent, part of
+   their nature. Usually, a creature with an inherent alignment has some connection (through ancestry, history, or
+   magic) to the Outer Planes or is a magical beast.<br/><br/>
+   For other creatures, races, and classes, the indicated alignment in the table is the typical or most common one.
+   Normal sentient creatures can be of any alignment. They may have inherent tendencies toward a particular alignment,
+   but individuals can vary from this norm. Depending on the type of creature, these tendencies may be stronger or
+   weaker. For example, kobolds and beholders are usually lawful evil, but kobolds display more variation in alignment
+   than beholders because their inborn alignment tendency isn\'t as strong. Also, sentient creatures have cultural
+   tendencies that usually reinforce alignment tendencies. For example, orcs tend to be chaotic evil, and their culture
+   tends to produce chaotic evil members. A human raised among orcs is more likely than normal to be chaotic evil, while
+   an orc raised among humans is less likely to be so.'),
+  (3, 'Good vs. Evil',
+   'Good characters and creatures protect innocent life. Evil characters and creatures debase or destroy innocent life,
+   whether for fun or for profit.<br/><br/>
+   "Good" implies altruism, respect for life, and a concern for the dignity of sentient beings. Good characters make
+   personal sacrifices to help others.<br/><br/>
+   "Evil" implies hurting, oppressing, and killing others. Some evil creatures simply have no compassion for others and
+   kill without qualms if doing so is convenient. Others actively pursue evil, killing for sport or out of duty to some
+   evil deity or master.<br/><br/>
+   People who are neutral with respect to good and evil have compunctions against killing the innocent but lack the
+   commitment to make sacrifices to protect or help others. Neutral people are committed to others by personal
+   relationships. A neutral person may sacrifice himself to protect his family or even his homeland, but he would not do
+   so for strangers who are not related to him.<br/><br/>
+   Being good or evil can be a conscious choice, as with the paladin who attempts to live up to her ideals or the evil
+   cleric who causes pain and terror to emulate his god. For most people, though, being good or evil is an attitude that
+   one recognizes but does not choose. Being neutral on the good-evil axis usually represents a lack of commitment one
+   way or the other, but for some it represents a positive commitment to a balanced view. While acknowledging that good
+   and evil are objective states, not just opinions, these folk maintain that a balance between the two is the proper
+   place for people, or at least for them.<br/><br/>
+   Animals and other creatures incapable of moral action are neutral rather than good or evil. Even deadly vipers and
+   tigers that eat people are neutral because they lack the capacity for morally right or wrong behavior.'),
+  (4, 'Law vs. Chaos',
+   'Lawful characters tell the truth, keep their word, respect authority, honor tradition, and judge those who fall
+   short of their duties. Chaotic characters follow their consciences, resent being told what to do, favor new ideas
+   over tradition, and do what they promise if they feel like it.<br/><br/>
+   "Law" implies honor, trustworthiness, obedience to authority, and reliability. On the downside, lawfulness can
+   include close-mindedness, reactionary adherence to tradition, judgmentalness, and a lack of adaptability. Those who
+   consciously promote lawfulness say that only lawful behavior creates a society in which people can depend on each
+   other and make the right decisions in full confidence that others will act as they should.<br/><br/>
+   "Chaos" implies freedom, adaptability, and flexibility. On the downside, chaos can include recklessness, resentment
+   toward legitimate authority, arbitrary actions, and irresponsibility. Those who promote chaotic behavior say that
+   only unfettered personal freedom allows people to express themselves fully and lets society benefit from the
+   potential that its individuals have within them.<br/><br/>
+   Someone who is neutral with respect to law and chaos has a normal respect for authority and feels neither a
+   compulsion to obey nor a compulsion to rebel. She is honest but can be tempted into lying or deceiving
+   others.<br/><br/>
+   Devotion to law or chaos may be a conscious choice, but more often it is a personality trait that is recognized
+   rather than being chosen. Neutrality on the lawful-chaotic axis is usually simply a middle state, a state of not
+   feeling compelled toward one side or the other. Some few such neutrals, however, espouse neutrality as superior to
+   law or chaos, regarding each as an extreme with its own blind spots and drawbacks.<br/><br/>
+   Animals and other creatures incapable of moral action are neutral. Dogs may be obedient and cats free-spirited, but
+   they do not have the moral capacity to be truly lawful or chaotic.'),
+  (5, 'Lawful Good, "Crusader"',
+   'A lawful good character acts as a good person is expected or required to act. She combines a commitment to oppose
+   evil with the discipline to fight relentlessly. She tells the truth, keeps her word, helps those in need, and speaks
+   out against injustice. A lawful good character hates to see the guilty go unpunished. Alhandra, a paladin who fights
+   evil without mercy and protects the innocent without hesitation, is lawful good.<br/>
+   Lawful good is the best alignment you can be because it combines honor and compassion.'),
+  (6, 'Neutral Good, "Benefactor"',
+   'A neutral good character does the best that a good person can do. He is devoted to helping others. He works with
+   kings and magistrates but does not feel beholden to them. Jozan, a cleric who helps others according to their needs,
+   is neutral good.<br/>
+   Neutral good is the best alignment you can be because it means doing what is good without bias for or against
+   order.'),
+  (7, 'Chaotic Good, "Rebel"',
+   'A chaotic good character acts as his conscience directs him with little regard for what others expect of him. He
+   makes his own way, but he\'s kind and benevolent. He believes in goodness and right but has little use for laws and
+   regulations. He hates it when people try to intimidate others and tell them what to do. He follows his own moral
+   compass, which, although good, may not agree with that of society. Soveliss, a ranger who waylays the evil baron\'s
+   tax collectors, is chaotic good.<br/>
+   Chaotic good is the best alignment you can be because it combines a good heart with a free spirit.'),
+  (8, 'Lawful Neutral, "Judge"',
+   'A lawful neutral character acts as law, tradition, or a personal code directs her. Order and organization are
+   paramount to her. She may believe in personal order and live by a code or standard, or she may believe in order for
+   all and favor a strong, organized government. Ember, a monk who follows her discipline without being swayed either by
+   the demands of those in need or by the temptations of evil, is lawful neutral.<br/>
+   Lawful neutral is the best alignment you can be because it means you are reliable and honorable without being a
+   zealot.'),
+  (9, 'True Neutral, "Undecided"',
+   'A neutral character does what seems to be a good idea. She doesn\'t feel strongly one way or the other when it comes
+   to good vs. evil or law vs. chaos. Most neutral characters exhibit a lack of conviction or bias rather than a
+   commitment to neutrality. Such a character thinks of good as better than evil - after all, she would rather have good
+   neighbors and rulers than evil ones. Still, she\'s not personally committed to upholding good in any abstract or
+   universal way. Mialee, a wizard who devotes herself to her art and is bored by the semantics of moral debate, is
+   neutral.<br/>
+   Some neutral characters, on the other hand, commit themselves philosophically to neutrality. They see good, evil,
+   law, and chaos as prejudices and dangerous extremes. They advocate the middle way of neutrality as the best, most
+   balance road in the long run.<br/>
+   Neutral is the best alignment you can be because it means you act naturally, without prejudice or compulsion.'),
+  (10, 'Chaotic Neutral, "Free Spirit"',
+   'A chaotic neutral character follows his whims. He is an individualist first and last. He values his own liberty but
+   doesn\'t strive to protect others\' freedom. He avoids authority, resents restrictions, and challenges traditions. A
+   chaotic neutral character does not intentionally disrupt organizations as part of a campaign of anarchy. To do so, he
+   would have to be motivated either by good (and a desire to liberate others) or evil (and a desire to make those
+   different from himself suffer). A chaotic neutral character may be unpredictable, but his behavior is not totally
+   random. He is not as likely to jump off a bridge as to cross it. Gimble, a bard who wanders the land living by his
+   wits, is chaotic neutral.<br/>
+   Chaotic neutral is the best alignment you can be because it represents true freedom from both society\'s restrictions
+   and a do-gooder\'s zeal.'),
+  (11, 'Lawful Evil "Dominator"',
+   'A lawful evil villain methodically takes what he wants within the limits of his code of conduct without regard for
+   whom it hurts. He cares about tradition, loyalty, and order but not about freedom, dignity, or life. He plays by the
+   rules but without mercy or compassion. He is comfortable in a hierarchy and would like to rule, but is willing to
+   serve. He condemns others not according to their actions but according to race, religion, homeland, or social rank.
+   He is loath to break laws or promises. This reluctance comes party from his nature and partly because he depends on
+   order to protect himself from those who oppose him on moral grounds. Some lawful evil villains have particular
+   taboos, such as not killing in cold blood (but having underlings do it) or not letting children come to harm (if it
+   can be helped). They imagine that these compulsions put them above unprincipled villains. The scheming baron who
+   expands his power and exploits his people is lawful evil.<br/>
+   Some lawful evil people and creatures commit themselves to evil with a zeal like that of a crusader committed to
+   good. Beyond being willing to hurt others for their own ends, they take pleasure in spreading evil as an end unto
+   itself. They may also see doing evil as part of a duty to an evil deity or master.<br/>
+   Lawful evil is sometimes called "diabolical," because devils are the epitome of lawful evil.<br/>
+   Lawful evil is the most dangerous alignment because it represents methodical, intentional, and frequently successful
+   evil.'),
+  (12, 'Neutral Evil, "Malefactor"',
+   'A neutral evil villain does whatever she can get away with. SHe is out for herself, pure and simple. She sheds no
+   tears for those she kills, whether for profit, sport, or convenience. She has no love of order and holds no illusion
+   that following laws, traditions, or codes would make her any better or more noble. On the other hand, she doesn\'t
+   have the restless nature or love of conflict that a chaotic evil villain has. The criminal who robs and murders to
+   get what she wants is neutral evil.<br/>
+   Some neutral evil villains hold up evil as an ideal, committing evil for its own sake. Most often, such villains are
+   devoted to evil deities or secret societies.<br/>
+   Neutral evil is the most dangerous alignment because it represents pure evil without honor and without variation.'),
+  (13, 'Chaotic Evil, "Destroyer"',
+   'A chaotic evil character does whatever his greed, hatred, and lust for destruction drive him to do. He is
+   hot-tempered, vicious, arbitrarily violent, and unpredictable. If he is simply out for whatever he can get, he is
+   ruthless and brutal. If he is committed to the spread of evil and chaos, he is even worse. Thankfully, his plans are
+   haphazard, and any groups he joins or forms are poorly organized. Typically, chaotic evil people can be made to work
+   together only by force, and their leader lasts only as long as he can thwart attempts to topple or assassinate him.
+   The demented sorcerer pursuing mad schemes of vengeance and havoc is chaotic evil.<br/>
+   Chaotic evil is sometimes called "demonic" because demons are the epitome of chaotic evil.<br/>
+   Chaotic evil is the most dangerous alignment because it represents the destruction not only of beauty and life but
+   also of the order and which beauty and life depend.');
+
+
+/*------Creature, Race, and Class Alignments------*/
+CREATE TABLE alignment_examples (
+  id        INT(3) PRIMARY KEY,
+  alignment VARCHAR(20),
+  example   VARCHAR(20)
+);
+
+
+/*------CRC Alignment Entries------*/
+INSERT INTO alignment_examples
+VALUES (1, 'Lawful Good', '<i>Archons</i>'),
+  (2, 'Lawful Good', 'Gold Dragons'),
+  (3, 'Lawful Good', '<i>Lammasus</i>'),
+  (4, 'Lawful Good', 'Dwarves'),
+  (5, 'Lawful Good', '<i>Paladins</i>'),
+  (6, 'Neutral Good', '<i>Guardinals</i>'),
+  (7, 'Neutral Good', 'Gnomes'),
+  (8, 'Neutral Good', 'Centaurs'),
+  (9, 'Neutral Good', 'Giant Eagles'),
+  (10, 'Neutral Good', '<i>Pseudodragons</i>'),
+  (11, 'Chaotic Good', '<i>Eladrins</i>'),
+  (12, 'Chaotic Good', 'Copper Dragons'),
+  (13, 'Chaotic Good', '<i>Unicorns</i>'),
+  (14, 'Chaotic Good', 'Elves'),
+  (15, 'Chaotic Good', 'Rangers'),
+  (16, 'Lawful Neutral', 'Monks'),
+  (17, 'Lawful Neutral', 'Wizards'),
+  (18, 'Lawful Neutral', '<i>Formians</i>'),
+  (19, 'Lawful Neutral', '<i>Azers</i>'),
+  (20, 'Neutral', '<i>Animals</i>'),
+  (21, 'Neutral', 'Halflings'),
+  (22, 'Neutral', 'Humans'),
+  (23, 'Neutral', 'Lizardfolk'),
+  (24, 'Neutral', 'Druids'),
+  (25, 'Chaotic Neutral', 'Half-Elves'),
+  (26, 'Chaotic Neutral', 'Half-Orcs'),
+  (27, 'Chaotic Neutral', 'Barbarians'),
+  (28, 'Chaotic Neutral', 'Bards'),
+  (29, 'Chaotic Neutral', 'Rogues'),
+  (30, 'Lawful Evil', '<i>Devils</i>'),
+  (31, 'Lawful Evil', 'Blue Dragons'),
+  (32, 'Lawful Evil', 'Beholders'),
+  (33, 'Lawful Evil', 'Ogre Mages'),
+  (34, 'Lawful Evil', 'Hobgoblins'),
+  (35, 'Lawful Evil', 'Kobolds'),
+  (36, 'Neutral Evil', 'Drow'),
+  (37, 'Neutral Evil', 'Goblins'),
+  (38, 'Neutral Evil', '<i>Allips</i>'),
+  (39, 'Neutral Evil', 'Ettercaps'),
+  (40, 'Neutral Evil', '<i>Devourers</i>'),
+  (41, 'Chaotic Evil', '<i>Demons</i>'),
+  (42, 'Chaotic Evil', 'Red Dragons'),
+  (43, 'Chaotic Evil', '<i>Nightshades</i>'),
+  (44, 'Chaotic Evil', 'Troglodytes'),
+  (45, 'Chaotic Evil', 'Gnolls'),
+  (46, 'Chaotic Evil', 'Ogres'),
+  (47, 'Chaotic Evil', 'Orcs');
+
+
