@@ -72,7 +72,7 @@ CREATE TABLE deities (
   titles             VARCHAR(50),
   alignment          VARCHAR(30),
   domains            VARCHAR(50),
-  typical_worshipers VARCHAR(50),
+  typical_worshipers VARCHAR(100),
   favored_weapon     VARCHAR(30),
   description        TEXT,
   image_link         VARCHAR(50)
@@ -214,7 +214,7 @@ VALUES (1, 'Boccob', 'God of Magic', 'Neutral', 'Knowledge, Magic, Trickery', 'W
 CREATE TABLE deities_by_race (
   id      INT(3) PRIMARY KEY,
   race    VARCHAR(20),
-  deities VARCHAR(50)
+  deities VARCHAR(100)
 );
 
 

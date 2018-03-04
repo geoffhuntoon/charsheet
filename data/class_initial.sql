@@ -1,7 +1,7 @@
 /*------Classes------*/
 CREATE TABLE classes (
   id              INT(2) PRIMARY KEY,
-  name            VARCHAR(15),
+  name            VARCHAR(100),
   spells_per_day  BOOLEAN,
   spells_known    BOOLEAN,
   general         TEXT,
@@ -32,7 +32,7 @@ CREATE TABLE class_stats (
   fortitude_save      INT(3),
   reflex_save         INT(3),
   will_save           INT(3),
-  special             VARCHAR(50),
+  special             TEXT,
   FOREIGN KEY (class_id) REFERENCES classes (id)
 );
 
@@ -42,7 +42,7 @@ CREATE TABLE class_features (
   id          INT(3) PRIMARY KEY,
   class_id    INT(3),
   class_name  VARCHAR(15),
-  name        VARCHAR(30),
+  name        VARCHAR(100),
   description TEXT
 );
 
@@ -532,21 +532,23 @@ VALUES (1, 2, 'Bard', 1, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
 /*------Bardic Knowledge------*/
 CREATE TABLE bardic_knowledge (
   id                INT(1) PRIMARY KEY,
+  class_id          INT(3),
   difficulty_class  INT(2),
   type_of_knowledge TEXT,
-  examples          TEXT
+  examples          TEXT,
+  FOREIGN KEY (class_id) REFERENCES classes(id)
 );
 
 
 /*------Bardic Knowledge Examples------*/
 INSERT INTO bardic_knowledge
-VALUES (1, 10, 'Common, known by at least a substantial minority of the local population.',
+VALUES (1, 2, 10, 'Common, known by at least a substantial minority of the local population.',
         'A local mayor\'s reputation for drinking; common legends about a powerful place of mystery.'),
-  (2, 20, 'Uncommon but available, known by only a few people in the area.',
+  (2, 2, 20, 'Uncommon but available, known by only a few people in the area.',
    'A local priest\'s shady past; legends about a powerful magic item.'),
-  (3, 25, 'Obscure, known by few, hard to come by.',
+  (3, 2, 25, 'Obscure, known by few, hard to come by.',
    'A knight\'s family history; legends about a minor place of mystery or magic item.'),
-  (4, 30, 'Extremely obscure, known by very few, possibly forgotten by most who once knew it, possibly known only by
+  (4, 2, 30, 'Extremely obscure, known by very few, possibly forgotten by most who once knew it, possibly known only by
    those who don\'t understand the significance of the knowledge.',
    'A mighty wizard\'s childhood nickname; the history of a petty magic item.');
 
@@ -1358,6 +1360,7 @@ VALUES (52, 6, 'Monk', 'Weapon and Armor Proficiency',
 /*------Monk Class Additional Statistics------*/
 CREATE TABLE monk_additional_stats (
   level                    INT(3) PRIMARY KEY,
+  class_id                 INT(3),
   flurry_of_blows_1        INT(3),
   flurry_of_blows_2        INT(3),
   flurry_of_blows_3        INT(3),
@@ -1367,32 +1370,33 @@ CREATE TABLE monk_additional_stats (
   unarmed_damage           VARCHAR(10),
   unarmed_damage_large     VARCHAR(10),
   ac_bonus                 INT(2),
-  unarmed_speed_bonus_feet INT(3)
+  unarmed_speed_bonus_feet INT(3),
+  FOREIGN KEY (class_id) REFERENCES classes(id)
 );
 
 
 /*------Monk Additional Statistics Entries------*/
 INSERT INTO monk_additional_stats
-VALUES (1, -2, -2, NULL, NULL, NULL, '1d4', '1d6', '1d8', 0, 0),
-  (2, -1, -1, NULL, NULL, NULL, '1d4', '1d6', '1d8', 0, 0),
-  (3, 0, 0, NULL, NULL, NULL, '1d4', '1d6', '1d8', 0, 10),
-  (4, 1, 1, NULL, NULL, NULL, '1d6', '1d8', '2d6', 0, 10),
-  (5, 2, 2, NULL, NULL, NULL, '1d6', '1d8', '2d6', 1, 10),
-  (6, 3, 3, NULL, NULL, NULL, '1d6', '1d8', '2d6', 1, 20),
-  (7, 4, 4, NULL, NULL, NULL, '1d6', '1d8', '2d6', 1, 20),
-  (8, 5, 5, 0, NULL, NULL, '1d8', '1d10', '2d8', 1, 20),
-  (9, 6, 6, 1, NULL, NULL, '1d8', '1d10', '2d8', 1, 30),
-  (10, 7, 7, 2, NULL, NULL, '1d8', '1d10', '2d8', 2, 30),
-  (11, 8, 8, 8, 3, NULL, '1d8', '1d10', '2d8', 2, 30),
-  (12, 9, 9, 9, 4, NULL, '1d10', '2d6', '3d6', 2, 40),
-  (13, 9, 9, 9, 4, NULL, '1d10', '2d6', '3d6', 2, 40),
-  (14, 10, 10, 10, 5, NULL, '1d10', '2d6', '3d6', 2, 40),
-  (15, 11, 11, 11, 6, 1, '1d10', '2d6', '3d6', 3, 50),
-  (16, 12, 12, 12, 7, 2, '2d6', '2d8', '3d8', 3, 50),
-  (17, 12, 12, 12, 7, 2, '2d6', '2d8', '3d8', 3, 50),
-  (18, 13, 13, 13, 8, 3, '2d6', '2d8', '3d8', 3, 60),
-  (19, 14, 14, 14, 9, 4, '2d6', '2d8', '3d8', 3, 60),
-  (20, 15, 15, 15, 10, 5, '2d8', '2d10', '4d8', 4, 60);
+VALUES (1, 6, -2, -2, NULL, NULL, NULL, '1d4', '1d6', '1d8', 0, 0),
+  (2, 6, -1, -1, NULL, NULL, NULL, '1d4', '1d6', '1d8', 0, 0),
+  (3, 6, 0, 0, NULL, NULL, NULL, '1d4', '1d6', '1d8', 0, 10),
+  (4, 6, 1, 1, NULL, NULL, NULL, '1d6', '1d8', '2d6', 0, 10),
+  (5, 6, 2, 2, NULL, NULL, NULL, '1d6', '1d8', '2d6', 1, 10),
+  (6, 6, 3, 3, NULL, NULL, NULL, '1d6', '1d8', '2d6', 1, 20),
+  (7, 6, 4, 4, NULL, NULL, NULL, '1d6', '1d8', '2d6', 1, 20),
+  (8, 6, 5, 5, 0, NULL, NULL, '1d8', '1d10', '2d8', 1, 20),
+  (9, 6, 6, 6, 1, NULL, NULL, '1d8', '1d10', '2d8', 1, 30),
+  (10, 6, 7, 7, 2, NULL, NULL, '1d8', '1d10', '2d8', 2, 30),
+  (11, 6, 8, 8, 8, 3, NULL, '1d8', '1d10', '2d8', 2, 30),
+  (12, 6, 9, 9, 9, 4, NULL, '1d10', '2d6', '3d6', 2, 40),
+  (13, 6, 9, 9, 9, 4, NULL, '1d10', '2d6', '3d6', 2, 40),
+  (14, 6, 10, 10, 10, 5, NULL, '1d10', '2d6', '3d6', 2, 40),
+  (15, 6, 11, 11, 11, 6, 1, '1d10', '2d6', '3d6', 3, 50),
+  (16, 6, 12, 12, 12, 7, 2, '2d6', '2d8', '3d8', 3, 50),
+  (17, 6, 12, 12, 12, 7, 2, '2d6', '2d8', '3d8', 3, 50),
+  (18, 6, 13, 13, 13, 8, 3, '2d6', '2d8', '3d8', 3, 60),
+  (19, 6, 14, 14, 14, 9, 4, '2d6', '2d8', '3d8', 3, 60),
+  (20, 6, 15, 15, 15, 10, 5, '2d8', '2d10', '4d8', 4, 60);
 
 
 /*------Paladin------*/
@@ -1825,45 +1829,47 @@ VALUES (81, 8, 'Ranger', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
 /*------Ranger Favored Enemies------*/
 CREATE TABLE ranger_favored_enemies (
   id       INT(3) PRIMARY KEY,
+  class_id INT(3),
   type     VARCHAR(30),
-  examples VARCHAR(30)
+  examples VARCHAR(30),
+  FOREIGN KEY (class_id) REFERENCES classes(id)
 );
 
 
 /*------Ranger Favored Enemies Entries------*/
 INSERT INTO ranger_favored_enemies
-VALUES (1, 'Aberration', 'Beholder'),
-  (2, 'Animal', 'Bear'),
-  (3, 'Construct', 'Golem'),
-  (4, 'Dragon', 'Black Dragon'),
-  (5, 'Elemental', 'Invisible Stalker'),
-  (6, 'Fey', 'Dryad'),
-  (7, 'Giant', 'Ogre'),
-  (8, 'Humanoid (aquatic)', 'Merfolk'),
-  (9, 'Humanoid (dwarf)', 'Dwarf'),
-  (10, 'Humanoid (elf)', 'Elf'),
-  (11, 'Humanoid (goblinoid)', 'Hobgoblin'),
-  (12, 'Humanoid (gnoll)', 'Gnoll'),
-  (13, 'Humanoid (gnome)', 'Gnome'),
-  (14, 'Humanoid (halfling)', 'Halfling'),
-  (15, 'Humanoid (human)', 'Human'),
-  (16, 'Humanoid (orc)', 'Orc'),
-  (17, 'Humanoid (reptilian)', 'Kobold'),
-  (18, 'Magical Beast', 'Displacer Beast'),
-  (19, 'Monstrous Humanoid', 'Minotaur'),
-  (20, 'Ooze', 'Gelatinous Cube'),
-  (21, 'Outsider (air)', 'Arrowhawk'),
-  (22, 'Outsider (chaotic)', 'Demon'),
-  (23, 'Outsider (earth)', 'Xorn'),
-  (24, 'Outsider (evil)', 'Devil'),
-  (25, 'Outsider (fire)', 'Salamander'),
-  (26, 'Outsider (good)', 'Angel'),
-  (27, 'Outsider (lawful)', 'Formian'),
-  (28, 'Outsider (native)', 'Tiefling'),
-  (29, 'Outsider (water)', 'Tojanida'),
-  (30, 'Plant', 'Shambling Mound'),
-  (31, 'Undead', 'Zombie'),
-  (32, 'Vermin', 'Monstrous Spider');
+VALUES (1, 8, 'Aberration', 'Beholder'),
+  (2, 8, 'Animal', 'Bear'),
+  (3, 8, 'Construct', 'Golem'),
+  (4, 8, 'Dragon', 'Black Dragon'),
+  (5, 8, 'Elemental', 'Invisible Stalker'),
+  (6, 8, 'Fey', 'Dryad'),
+  (7, 8, 'Giant', 'Ogre'),
+  (8, 8, 'Humanoid (aquatic)', 'Merfolk'),
+  (9, 8, 'Humanoid (dwarf)', 'Dwarf'),
+  (10, 8, 'Humanoid (elf)', 'Elf'),
+  (11, 8, 'Humanoid (goblinoid)', 'Hobgoblin'),
+  (12, 8, 'Humanoid (gnoll)', 'Gnoll'),
+  (13, 8, 'Humanoid (gnome)', 'Gnome'),
+  (14, 8, 'Humanoid (halfling)', 'Halfling'),
+  (15, 8, 'Humanoid (human)', 'Human'),
+  (16, 8, 'Humanoid (orc)', 'Orc'),
+  (17, 8, 'Humanoid (reptilian)', 'Kobold'),
+  (18, 8, 'Magical Beast', 'Displacer Beast'),
+  (19, 8, 'Monstrous Humanoid', 'Minotaur'),
+  (20, 8, 'Ooze', 'Gelatinous Cube'),
+  (21, 8, 'Outsider (air)', 'Arrowhawk'),
+  (22, 8, 'Outsider (chaotic)', 'Demon'),
+  (23, 8, 'Outsider (earth)', 'Xorn'),
+  (24, 8, 'Outsider (evil)', 'Devil'),
+  (25, 8, 'Outsider (fire)', 'Salamander'),
+  (26, 8, 'Outsider (good)', 'Angel'),
+  (27, 8, 'Outsider (lawful)', 'Formian'),
+  (28, 8, 'Outsider (native)', 'Tiefling'),
+  (29, 8, 'Outsider (water)', 'Tojanida'),
+  (30, 8, 'Plant', 'Shambling Mound'),
+  (31, 8, 'Undead', 'Zombie'),
+  (32, 8, 'Vermin', 'Monstrous Spider');
 
 
 /*------Rogue------*/

@@ -1,6 +1,6 @@
 CREATE TABLE races (
   id            INT(11) PRIMARY KEY,
-  name          VARCHAR(15),
+  name          VARCHAR(30),
   strmod        INT(2),
   dexmod        INT(2),
   conmod        INT(2),
@@ -22,10 +22,11 @@ CREATE TABLE races (
 
 CREATE TABLE race_feats (
   id          INT(11) PRIMARY KEY,
-  race_name   VARCHAR(15),
+  race_id     INT(3),
+  race_name   VARCHAR(30),
   feat        VARCHAR(50),
   description TEXT,
-  FOREIGN KEY (race_name) REFERENCES races (name)
+  FOREIGN KEY (race_id) REFERENCES races (id)
 );
 
 
@@ -81,19 +82,19 @@ VALUES (1, 'Human', 0, 0, 0, 0, 0, 0,
 
 /*------Human Feats------*/
 INSERT INTO race_feats
-VALUES (1, 'Human', 'Size',
+VALUES (1, 1, 'Human', 'Size',
         'Medium: As Medium creatures, humans have no special bonuses or penalties due to their size.'),
-  (2, 'Human', 'Base Speed',
+  (2, 1, 'Human', 'Base Speed',
    'Human base land speed is 30 feet.'),
-  (3, 'Human', 'Extra Feat',
+  (3, 1, 'Human', 'Extra Feat',
    '1 extra feat at 1st level, because humans are quick to master specialized tasks and varied in their talents.'),
-  (4, 'Human', 'Bonus Skill Points',
+  (4, 1, 'Human', 'Bonus Skill Points',
    '4 extra skill points at 1st level and 1 extra skill point at each additional level, since humans are versatile
    and capable. (The 4 skill points at 1st level are added on as a bonus, not multiplied in.)'),
-  (5, 'Human', 'Languages',
+  (5, 1, 'Human', 'Languages',
    'Automatic Language: Common. Bonus Languages: Any (other than secret languages, such as Druidic).
    Humans mingle with all kinds of other folk and thus can learn any language found in an area.'),
-  (6, 'Human', 'Favored Class',
+  (6, 1, 'Human', 'Favored Class',
    'Any. When determining whether a mutliclass human takes an experience point penalty, her highest-level class
    does not count.');
 
@@ -159,18 +160,18 @@ VALUES (2, 'Dwarf', 0, 0, 2, 0, 0, -2,
 
 /*------Dwarf Feats------*/
 INSERT INTO race_feats
-VALUES (7, 'Dwarf', 'Ability Modifiers',
+VALUES (7, 2, 'Dwarf', 'Ability Modifiers',
         '+2 Constitution, -2 Charisma: Dwarves are stout and tough but tend to be gruff and reserved.'),
-  (8, 'Dwarf', 'Size',
+  (8, 2, 'Dwarf', 'Size',
    'Medium:  As Medium creatures, dwarves have no special bonuses or penalties due to their size.'),
-  (9, 'Dwarf', 'Base Speed',
+  (9, 2, 'Dwarf', 'Base Speed',
    'Dwarf base land speed is 20 feet. However, dwarves can move at this speed even when wearing medium or heavy
    armor or when carrying a medium or heavy load (unlike other creatures, whose speed is reduced in such
    situations).'),
-  (10, 'Dwarf', 'Darkvision',
+  (10, 2, 'Dwarf', 'Darkvision',
    'Dwarves can see in the dark up to 60 feet. Darkvision is black and white only, but it is otherwise like normal
    sight, and dwarves can function just fine with no light at all.'),
-  (11, 'Dwarf', 'Stonecunning',
+  (11, 2, 'Dwarf', 'Stonecunning',
    'This ability grants a dwarf a +2 racial bonus on Search checks to notice unusual stonework, such as sliding
    walls, stonework traps, new construction (even when built to match the old), unsafe stone surfaces, shaky stone
    ceilings, and the like. Something that isn''t stone but that is disguised as stone also counts as unusual
@@ -179,36 +180,36 @@ VALUES (7, 'Dwarf', 'Ability Modifiers',
    also intuit depth, sensing his approximate depth underground as naturally as a human can sense which way is up.
    Dwarves have a sixth sense about stonework, an innate ability that they get plenty of opportunity to practice
    and hone in their underground homes.'),
-  (12, 'Dwarf', 'Weapon Familiarity',
+  (12, 2, 'Dwarf', 'Weapon Familiarity',
    'Dwarves may treat dwarven waraxes and dwarven urgroshes as martial weapons, rather than exotic weapons.'),
-  (13, 'Dwarf', 'Stability',
+  (13, 2, 'Dwarf', 'Stability',
    'Dwarves are exceptionally stable on their feet. A dwarf gains a +4 bonus on ability checks made to resist being
    bull rushed or tripped when standing on the ground (but not when climbing, flying, riding, or otherwise not
    standing firmly on the ground).'),
-  (14, 'Dwarf', 'Poison',
+  (14, 2, 'Dwarf', 'Poison',
    '+2 racial bonus on saving throws against poison: Dwarves are hardy and resistant to toxins.'),
-  (15, 'Dwarf', 'Spell Effects',
+  (15, 2, 'Dwarf', 'Spell Effects',
    '+2 racial bonus on saving throws against spells and spell-like effects: Dwarves have an innate resistance to
    magic spells.'),
-  (16, 'Dwarf', 'Attack Bonus',
+  (16, 2, 'Dwarf', 'Attack Bonus',
    '+1 racial bonus on attack rolls against orcs (including half-orcs) and goblinoids (including goblins,
    hobgoblins, and bugbears): Dwarves are trained in the special combat techniques that allow them to fight their
    common enemies more effectively.'),
-  (17, 'Dwarf', 'Dodge Bonus',
+  (17, 2, 'Dwarf', 'Dodge Bonus',
    '+4 dodge bonus to Armor Class against monsters of the giant type (such as ogres, trolls, and hill giants): This
    bonus represents special training that dwarves undergo, during which they learn tricks that previous generations
    developed in their battles with giants. Any time a creature loses its Dexterity bonus (if any) to Armor Class,
    such as when it''s caught flat-footed, it loses its dodge bonus, too.'),
-  (18, 'Dwarf', 'Appraisal',
+  (18, 2, 'Dwarf', 'Appraisal',
    '+2 racial bonus on Appraise checks that are related to stone or metal items: Dwarves are familiar with valuable
    items of all kinds, especially those made of stone or metal.'),
-  (19, 'Dwarf', 'Crafting',
+  (19, 2, 'Dwarf', 'Crafting',
    '+2 racial bonus on Craft checks that are related to stone or metal:  Dwarves are especially capable with
    stonework and metalwork.'),
-  (20, 'Dwarf', 'Languages',
+  (20, 2, 'Dwarf', 'Languages',
    'Automatic Languages: Common and Dwarven. Bonus Languages: Giant, Gnome, Goblin, Orc, Terran, and Undercommon.
    Dwarves are familiar with the languages of their enemies and of their subterranean allies.'),
-  (21, 'Dwarf', 'Favored Class',
+  (21, 2, 'Dwarf', 'Favored Class',
    'Fighter. A multiclass dwarf''s fighter class does not count when determining whether he takes an experience
    point penalty for mutliclassing. Dwarven culture extols the virtues of battle, and the vocation comes easily to
    dwarves.');
@@ -284,31 +285,31 @@ VALUES (3, 'Elf', 0, 2, -2, 0, 0, 0,
 
 /*------Elf Feats------*/
 INSERT INTO race_feats
-VALUES (22, 'Elf', 'Ability Modifiers',
+VALUES (22, 3, 'Elf', 'Ability Modifiers',
         '+2 Dexterity, -2 Constitution: Elves are graceful but frail. An elf''s grace makes her naturally better at
         stealth and archery.'),
-  (23, 'Elf', 'Size',
+  (23, 3, 'Elf', 'Size',
    'Medium: As Medium creatures, elves have no special bonuses or penalties due to their size.'),
-  (24, 'Elf', 'Base Speed',
+  (24, 3, 'Elf', 'Base Speed',
    'Elf base land speed is 30 feet.'),
-  (25, 'Elf', 'Magic Resistance',
+  (25, 3, 'Elf', 'Magic Resistance',
    'Immunity to magic sleep effects, and a +2 racial saving throw bonus against enchantment spells or effects.'),
-  (26, 'Elf', 'Low-Light Vision',
+  (26, 3, 'Elf', 'Low-Light Vision',
    'An elf can see twice as far as a human in starlight, moonlight, torchlight, and similar conditions of poor
    illumination. She retains the ability to distinguish color and detail under these conditions.'),
-  (27, 'Elf', 'Weapon Proficiency',
+  (27, 3, 'Elf', 'Weapon Proficiency',
    'Elves receive the Martial Weapon Proficiency feats for the longsword, rapier, longbow (including composite
    longbow), and shortbow (including composite shortbow) as bonus feats. Elves esteem the arts of swordplay and
    archery, so all elves are familiar with these weapons.'),
-  (28, 'Elf', 'Keen Senses',
+  (28, 3, 'Elf', 'Keen Senses',
    '+2 racial bonus on Listen, Search, and Spot checks. An elf who merely passes within 5 feet of a secret or
    concealed door is entitled to a Search check to notice it as if she were actively looking for it. An elf''s
    senses are so keen that she practically has a sixth sense about hidden portals.'),
-  (29, 'Elf', 'Languages',
+  (29, 3, 'Elf', 'Languages',
    'Automatic Languages:  Common and Elven.  Bonus Languages:  Draconic, Gnoll, Gnome, Goblin, Orc, and Sylvan.
    Elves commonly know the languages of their enemies and of their friends, as well as Draconic, the language
    commonly found in ancient tomes of secret knowledge.'),
-  (30, 'Elf', 'Favored Class',
+  (30, 3, 'Elf', 'Favored Class',
    'Wizard. A mutliclass elf''s wizard class does not count when determining whether she takes an experience point
    penalty for mutliclassing. Wizardry comes naturally to elves - indeed, they sometimes claim to have invented it,
    and fighter/wizards are especially common among them.');
@@ -378,50 +379,50 @@ VALUES (4, 'Gnome', -2, 0, 2, 0, 0, 0,
 
 /*------Elf Feats------*/
 INSERT INTO race_feats
-VALUES (31, 'Gnome', 'Ability Modifiers',
+VALUES (31, 4, 'Gnome', 'Ability Modifiers',
         '+2 Constitution, -2 Strength: Like dwarves, gnomes are tough, but they are small and therefore not as strong
         as larger humanoids.'),
-  (32, 'Gnome', 'Size',
+  (32, 4, 'Gnome', 'Size',
    'Small: As a Small creature, a gnomes gains a +1 size bonus to Armor Class, a +1 size bonus on attack rolls, and
    a +4 size bonus on Hide checks, but he uses smaller weapons than humans use, and his lifting and carrying limits
    are three-quarters of those of a Medium character.'),
-  (33, 'Gnome', 'Speed',
+  (33, 4, 'Gnome', 'Speed',
    'Gnome base land speed is 20 feet.'),
-  (34, 'Gnome', 'Low-Light Vision',
+  (34, 4, 'Gnome', 'Low-Light Vision',
    'A gnome can see twice as far as a human in starlight, moonlight, torchlight, and similar conditions of poor
    illumination. He retains the ability to distinguish color and detail under these conditions.'),
-  (35, 'Gnome', 'Weapon Familiarity',
+  (35, 4, 'Gnome', 'Weapon Familiarity',
    'Gnomes may treat gnome hooked hammers as martial weapons rather than exotic weapons.'),
-  (36, 'Gnome', 'Illusion Resistance',
+  (36, 4, 'Gnome', 'Illusion Resistance',
    '+2 racial bonus on saving throws against illusions: Gnomes are innately familiar with illusions of all
    kinds.'),
-  (37, 'Gnome', 'Illusion Difficulty Class',
+  (37, 4, 'Gnome', 'Illusion Difficulty Class',
    'Add +1 to the Difficulty Class for all saving throws against illusion spells cast by gnomes. Their innate
    familiarity with these effects make their illusions more difficult to see through. This adjustment stacks with
    those from similar effects, such as the Spell Focus feat.'),
-  (38, 'Gnome', 'Attack Bonus',
+  (38, 4, 'Gnome', 'Attack Bonus',
    '+1 racial bonus on attack rolls against kobolds and goblinoids (including goblins, hobgoblins, and bugbears):
    Gnomes battle these creatures frequently and practice special techniques for fighting them.'),
-  (39, 'Gnome', 'Dodge Bonus',
+  (39, 4, 'Gnome', 'Dodge Bonus',
    '+4 dodge bonus to Armor Class against monster of the giant type (such as ogres, trolls, and hill giants): This
    bonus represents special training that gnomes undergo, during which they learn tricks that previous generations
    developed in their battles with giants. Any time a creature loses its Dexterity bonus (if any) to Armor Class,
    such as when it''s caught flat-footed, it loses its dodge bonus, too.'),
-  (40, 'Gnome', 'Keen Senses',
+  (40, 4, 'Gnome', 'Keen Senses',
    '+2 racial bonus on Listen checks: Gnomes have keen ears.'),
-  (41, 'Gnome', 'Crafting',
+  (41, 4, 'Gnome', 'Crafting',
    '+2 racial bonus on Craft (alchemy) checks: A gnome''s sensitive nose allows him to monitor alchemical
    processes by smell.'),
-  (42, 'Gnome', 'Languages',
+  (42, 4, 'Gnome', 'Languages',
    'Automatic Languages: Common and Gnome. Bonus Languages: Draconic, Dwarven, Elven, Giant, Goblin, and Orc.
    Gnomes deal more with elves and dwarves than elves and dwarves deal with one another, and they learn the
    languages of their enemies (kobolds, giants, goblins, and orcs) as well. In addition, a gnome can speak with a
    burrowing mammal (a badger, fox, rabbit, or the like). This ability is innate to gnomes.'),
-  (43, 'Gnome', 'Spell-Like Abilities',
+  (43, 4, 'Gnome', 'Spell-Like Abilities',
    '1/day - <i>speak with animals</i> (burrowing mammal only, duration 1 minute). A gnome with a Charisma score of
    at least 10 also has the following spell-like abilities: 1/day - <i>dancing lights</i>, <i>ghost sound</i>,
    <i>prestidigitation</i>. Caster level 1st; save DC 10 + gnome''s Charisma modifier + spell level.'),
-  (44, 'Gnome', 'Favored Class',
+  (44, 4, 'Gnome', 'Favored Class',
    'Bard. A multiclass gnome''s bard class does not count when determining whether he takes an experience point
    penalty.');
 
@@ -479,29 +480,29 @@ VALUES (5, 'Half-Elf', 0, 0, 0, 0, 0, 0,
 
 /*------Half-Elf Feats------*/
 INSERT INTO race_feats
-VALUES (45, 'Half-Elf', 'Size',
+VALUES (45, 5, 'Half-Elf', 'Size',
         'Medium: As Medium characters, half-elves have no special bonuses or penalties due to their size.'),
-  (46, 'Half-Elf', 'Base Speed',
+  (46, 5, 'Half-Elf', 'Base Speed',
    'Half-elf base land speed is 30 feet.'),
-  (47, 'Half-Elf', 'Spell Resistance',
+  (47, 5, 'Half-Elf', 'Spell Resistance',
    'Immunity to <i>sleep</i> spells and similar magic effects, and a +2 racial bonus on saving throws against
    enchantment spells and effects.'),
-  (48, 'Half-Elf', 'Low-Light Vision',
+  (48, 5, 'Half-Elf', 'Low-Light Vision',
    'A half-elf can see twice as far as a human in starlight, moonlight, torchlight, and similar conditions of poor
    illumination. She retains the ability to distinguish color and detail under these conditions.'),
-  (49, 'Half-Elf', 'Keen Senses',
+  (49, 5, 'Half-Elf', 'Keen Senses',
    '+1 racial bonus on Listen, Search, and Spot checks: A half-elf does not have the elf''s ability to notice secret
    doors simply by passing near them. Half-elves have keen senses, but not as keen as those of an elf.'),
-  (50, 'Half-Elf', 'Diplomatic',
+  (50, 5, 'Half-Elf', 'Diplomatic',
    '+2 racial bonus on Diplomacy and Gather Information checks: Half-elves get along naturally with all people.'),
-  (51, 'Half-Elf', 'Elven Blood',
+  (51, 5, 'Half-Elf', 'Elven Blood',
    'For all effects related to race, a half-elf is considered an elf. Half-elves, for example, are just as vulnerable
    to special effects that affect elves as their elf ancestors are, and they can use magic items that are only usable
    by elves.'),
-  (52, 'Half-Elf', 'Languages',
+  (52, 5, 'Half-Elf', 'Languages',
    'Automatic Languages: Common and Elven. Bonus Languages: Any (other than secret languages, such as Druidic).
    Half-elves have all the versatility and broad (if shallow) experience that humans have.'),
-  (53, 'Half-Elf', 'Favored Class',
+  (53, 5, 'Half-Elf', 'Favored Class',
    'Any. When determining whether a multiclass half-elf takes an experience point penalty, her highest-level class
    does not count.');
 
@@ -565,24 +566,24 @@ VALUES (6, 'Half-Orc', 2, 0, 0, -2, 0, -2,
 
 /*------Half-Orc Feats------*/
 INSERT INTO race_feats
-VALUES (54, 'Half-Orc', 'Ability Modifiers',
+VALUES (54, 6, 'Half-Orc', 'Ability Modifiers',
         '+2 Strength, -2 Intelligence, -2 Charisma: Half-orcs are strong, but their orc lineage makes them dull and
         crude.'),
-  (55, 'Half-Orc', 'Size',
+  (55, 6, 'Half-Orc', 'Size',
    'Medium: As Medium creatures, half-orcs have no special bonuses or penalties due to their size.'),
-  (56, 'Half-Orc', 'Base Speed',
+  (56, 6, 'Half-Orc', 'Base Speed',
    'Half-orc base land speed is 30 feet.'),
-  (57, 'Half-Orc', 'Darkvision',
+  (57, 6, 'Half-Orc', 'Darkvision',
    'Half-orcs (and orcs) can see in the dark up to 60 feet. Darkvision is black and white only, but it is otherwise
    like normal sight, and half-orcs can function just fine with no light at all.'),
-  (58, 'Half-Orc', 'Orc Blood',
+  (58, 6, 'Half-Orc', 'Orc Blood',
    'For all effects related to race, a half-orc is considered an orc. Half-orcs, for example, are just as vulnerable to
    special effects that affect orcs as their orc ancestors are, and they can use magic items that are only usable by
    orcs.'),
-  (59, 'Half-Orc', 'Languages',
+  (59, 6, 'Half-Orc', 'Languages',
    'Automatic Languages: Common and Orc. Bonus Languages: Draconic, Giant, Gnoll, Goblin, and Abyssal. Smart half-orcs
    (who are rare) may know the languages of their allies or rivals.'),
-  (60, 'Half-Orc', 'Favored Class',
+  (60, 6, 'Half-Orc', 'Favored Class',
    'Barbarian. A multiclass half-orc''s barbarian class does not count when determining whether he takes an experience
    point penalty. Ferocity runs in a half-orc''s veins.');
 
@@ -649,179 +650,34 @@ VALUES (7, 'Halfling', -2, 2, 0, 0, 0, 0,
 
 /*------Halfling Feats------*/
 INSERT INTO race_feats
-VALUES (61, 'Halfling', 'Ability Modifiers',
+VALUES (61, 7, 'Halfling', 'Ability Modifiers',
         '+2 Dexterity, -2 Strength: Halflings are quick, agile, and good with ranged weapons, but they are small and
         therefore not as strong as other humanoids.'),
-  (62, 'Halfling', 'Size',
+  (62, 7, 'Halfling', 'Size',
    'Small: As a Small creature, a halfling gains a +1 size bonus to Armor Class, a +1 size bonus on attack rolls, and a
    +4 size bonus on Hide checks, but she uses smaller weapons than humans use, and her lifting and carrying limits are
    three-quarters of those of a Medium character.'),
-  (63, 'Halfling', 'Base Speed',
+  (63, 7, 'Halfling', 'Base Speed',
    'Halfling base land speed is 20 feet.'),
-  (64, 'Halfling', 'Agility',
+  (64, 7, 'Halfling', 'Agility',
    '+2 racial bonus on Climb, Jump, and Move Silently checks: Halflings are agile, surefooted, and athletic.'),
-  (65, 'Halfling', 'Saving Throws',
+  (65, 7, 'Halfling', 'Saving Throws',
    '+1 racial bonus on all saving throws: Halflings are surprisingly capable of avoiding mishaps.'),
-  (66, 'Halfling', 'Fearless',
+  (66, 7, 'Halfling', 'Fearless',
    '+2 morale bonus on saving throws against fear: This bonus stacks with the halfling''s +1 bonus on saving throws in
    general.'),
-  (67, 'Halfling', 'Good Aim',
+  (67, 7, 'Halfling', 'Good Aim',
    '+1 racial bonus on attack rolls with thrown weapons and slings: Throwing and slinging stones is a universal sport
    among halflings, and they develop especially good aim.'),
-  (68, 'Halfling', 'Keen Senses',
+  (68, 7, 'Halfling', 'Keen Senses',
    '+2 racial bonus on Listen checks: Halflings have keen ears.'),
-  (69, 'Halfling', 'Languages',
+  (69, 7, 'Halfling', 'Languages',
    'Automatic Languages: Common and Halfling. Bonus Languages: Dwarven, Elven, Gnome, Goblin, and Orc. Smart halflings
    learn the languages of their friends and enemies.'),
-  (70, 'Halfling', 'Favored Class',
+  (70, 7, 'Halfling', 'Favored Class',
    'Rogue. A multiclass halfling''s rogue class does not count when determining whether she takes an experience point
    penalty for multiclassing. Halflings have long had to rely on stealth, wit, and skill, and the vocation of rogue
    comes naturally to them.');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-INSERT INTO classes VALUES (4, 'Druid',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                            '',
-                            '',
-                            '',
-                            '',
-                            12);
-
-INSERT INTO classes VALUES (5, 'Fighter',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                            '',
-                            '',
-                            '',
-                            '',
-                            12);
-
-INSERT INTO classes VALUES (6, 'Monk',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                            '',
-                            '',
-                            '',
-                            '',
-                            12);
-
-INSERT INTO classes VALUES (7, 'Paladin',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                            '',
-                            '',
-                            '',
-                            '',
-                            12);
-
-INSERT INTO classes VALUES (8, 'Ranger',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                            '',
-                            '',
-                            '',
-                            '',
-                            12);
-
-INSERT INTO classes VALUES (9, 'Rogue',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                               '',
-                            '',
-                            '',
-                            '',
-                            '',
-                            12);
-
-INSERT INTO classes VALUES (10, 'Sorcerer',
-                                '',
-                                '',
-                                '',
-                                '',
-                                '',
-                                '',
-                                '',
-                                '',
-                                '',
-                            '',
-                            '',
-                            '',
-                            '',
-                            12);
-
-INSERT INTO classes VALUES (11, 'Wizard',
-                                '',
-                                '',
-                                '',
-                                '',
-                                '',
-                                '',
-                                '',
-                                '',
-                                '',
-                            '',
-                            '',
-                            '',
-                            '',
-                            12);
 
 
 CREATE FUNCTION skill_points(class VARCHAR(15), intmod INT, char_level INT)
