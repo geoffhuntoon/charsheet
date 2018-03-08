@@ -37,10 +37,6 @@ paper-tabs {
     box-shadow: 5px 5px 5px 0;
 }
 
-paper-dropdown-menu {
-    width: 88%;
-}
-
 paper-listbox {
     width: 200px;
     height: 250px;
@@ -49,10 +45,40 @@ paper-listbox {
 paper-dialog {
     font-family: "MedievalSharp", serif;
     font-weight: bold;
-    width: 80%;
+    width: 85%;
     height: 70%;
     border-radius: 5px;
     background: var(--dialog-background);
+}
+
+paper-dropdown-menu, paper-input {
+    padding: 0 5px;
+}
+
+table {
+    width: 50%;
+    margin: 0 auto;
+    table-layout: fixed;
+}
+
+td {
+    vertical-align: top;
+}
+
+.stat-table {
+    width: 100%;
+    table-layout: unset;
+}
+
+.stat-table th {
+    height: 50px;
+    text-align: left;
+}
+
+.stat-table, .stat-table th, .stat-table td {
+    padding: 2px;
+    border: 2px solid darkblue;
+    border-collapse: collapse;
 }
 
 /* Navigation buttons */
@@ -104,9 +130,14 @@ paper-dialog {
 }
 
 .input {
+    display: inline-block;
     width: 95%;
 }
 
 .small-input {
-    width: 40%;
+    width: 45%;
+}
+
+.dropdown-with-button {
+    width: 85%;
 }
