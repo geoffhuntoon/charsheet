@@ -1,0 +1,29 @@
+<paper-dialog id="alignment-dialog" with-backdrop always-on-top>
+  <h1 id="alignment-title">Alignment</h1>
+
+  <dom-bind>
+    <template>
+      <paper-tabs id="alignment-tabs" class="dialog-tabs" attr-for-selected="name" selected="{{selected}}">
+        <paper-tab name="general">General</paper-tab>
+        <paper-tab name="typical_alignments">Typical Alignments</paper-tab>
+        <paper-tab name="alignment_examples">Examples</paper-tab>
+        <paper-tab name="good_vs_evil">Good vs. Evil</paper-tab>
+        <paper-tab name="law_vs_chaos">Law vs. Chaos</paper-tab>
+        <paper-tab name="descriptions">Descriptions</paper-tab>
+      </paper-tabs>
+
+      <iron-pages id="alignment-pages" attr-for-selected="class" selected="{{selected}}">
+        <div class="general" style="height: 200px; overflow: auto;"></div>
+        <div class="typical_alignments" style="height: 200px; overflow: auto;"></div>
+        <div class="alignment_examples" style="height: 200px; overflow: auto;"></div>
+        <div class="good_vs_evil" style="height: 200px; overflow: auto;"></div>
+        <div class="law_vs_chaos" style="height: 200px; overflow: auto;"></div>
+        <div class="descriptions" style="height: 200px; overflow: auto;"></div>
+      </iron-pages>
+    </template>
+  </dom-bind>
+
+  <div class="buttons">
+    <paper-button class="nav-button" dialog-dismiss>Done</paper-button>
+  </div>
+</paper-dialog>

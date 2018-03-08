@@ -63,3 +63,23 @@ export const getClass = (req, res) => {
             });
     });
 };
+
+export const getAlignment = (req, res) => {
+    const db_conn = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'root',
+        database: 'dd35'
+    });
+
+    db_conn.connect(function (err) {
+        if (err) res.send(err);
+        db_conn.query('SELECT * FROM alignment', function (err, result) {
+            if (err) res.send(err);
+            db_conn.query('SELECT * FROM alignment_examples', function (ex_err, ex_result) {
+                if (ex_err) res.send(ex_err);
+                res.send([result, ex_result]);
+            });
+        });
+    });
+};
