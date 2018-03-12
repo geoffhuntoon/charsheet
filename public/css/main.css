@@ -1,17 +1,24 @@
-/* Base and element styles */
+/* Base style variables */
 :root {
     --primary-background: #ADCCFF;
     --button-background: #E5EFFF;
+    --bright-button-background: deepskyblue;
     --dialog-background: #ADDDFF;
     --paper-tab-ink: blue;
     --paper-button-ink-color: blue;
     --paper-tabs-selection-bar-color: blue;
 }
 
+
+/* Native element styles */
 body {
     font-family: "MedievalSharp", serif;
     margin: 10px;
     background: var(--primary-background);
+}
+
+a {
+    text-decoration: none;
 }
 
 h1 {
@@ -20,6 +27,33 @@ h1 {
     text-align: center;
 }
 
+h2 {
+    padding: 10px 0 0 20px;
+    margin: 10px 0 0 0;
+}
+
+table {
+    width: 100%;
+    margin: 0 auto;
+}
+
+td {
+    vertical-align: top;
+}
+
+th {
+    height: 50px;
+    text-align: left;
+}
+
+table, td, th {
+    padding: 2px;
+    border: 2px solid darkblue;
+    border-collapse: collapse;
+}
+
+
+/* Polymer element styles */
 paper-button {
     font-family: "MedievalSharp", serif;
     font-weight: bold;
@@ -27,6 +61,28 @@ paper-button {
     background: var(--button-background);
     border-radius: 5px;
     box-shadow: 5px 5px 5px 0;
+}
+
+paper-dialog {
+    font-family: "MedievalSharp", serif;
+    font-weight: bold;
+    width: 85%;
+    height: 85%;
+    border-radius: 5px;
+    background: var(--dialog-background);
+}
+
+paper-dialog-scrollable {
+    height: 300px;
+}
+
+paper-dropdown-menu, paper-input {
+    padding: 0 5px;
+}
+
+paper-listbox {
+    width: 200px;
+    height: 250px;
 }
 
 paper-tabs {
@@ -37,63 +93,11 @@ paper-tabs {
     box-shadow: 5px 5px 5px 0;
 }
 
-paper-listbox {
-    width: 200px;
-    height: 250px;
-}
 
-paper-dialog {
-    font-family: "MedievalSharp", serif;
-    font-weight: bold;
-    width: 85%;
-    height: 70%;
-    border-radius: 5px;
-    background: var(--dialog-background);
-}
-
-paper-dropdown-menu, paper-input {
-    padding: 0 5px;
-}
-
-table {
-    width: 50%;
-    margin: 0 auto;
-    table-layout: fixed;
-}
-
-td {
-    vertical-align: top;
-}
-
-.stat-table {
-    width: 100%;
-    table-layout: unset;
-}
-
-.stat-table th {
-    height: 50px;
-    text-align: left;
-}
-
-.stat-table, .stat-table th, .stat-table td {
-    padding: 2px;
-    border: 2px solid darkblue;
-    border-collapse: collapse;
-}
-
-/* Navigation buttons */
+/* Button styles */
 #nav-buttons {
     margin: 0 auto;
     width: 30%;
-}
-
-#nav-buttons a {
-    text-decoration: none;
-}
-
-.nav-button {
-    width: 30%;
-    color: black;
 }
 
 .buttons {
@@ -102,6 +106,33 @@ td {
     right: 10px;
 }
 
+.blue-button {
+    background-color: var(--bright-button-background);
+    text-align: center;
+}
+
+.die-button {
+    position: relative;
+    top: -5px;
+}
+
+.nav-button {
+    width: 30%;
+    color: black;
+}
+
+
+
+
+
+.small-listbox {
+    height: 150px;
+}
+
+
+
+
+
 .dialog-tabs {
     width: 90%;
     margin: 0 auto;
@@ -109,7 +140,18 @@ td {
     box-shadow: none;
 }
 
-/* Form styles */
+/* Form block styles */
+.column {
+    display: inline-block;
+    width: 45%;
+    padding: 5px 20px 5px 10px;
+}
+
+.column-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
 .form {
     font-family: "MedievalSharp", serif;
     width: 80%;
@@ -119,25 +161,49 @@ td {
     box-shadow: 5px 5px 5px 0;
 }
 
-.form h2 {
-    padding: 20px;
+.short-column {
+    display: inline-block;
+    width: 25%;
+    padding: 10px 10px 10px 30px;
 }
 
-.column {
+
+/* Input field styles */
+.box-input {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+    outline: none;
+    margin: 0 5px;
+}
+
+.box-input:focus {
+    box-shadow: 0 0 0 2px blue;
+}
+
+.dropdown-icon {
     display: inline-block;
-    width: 40%;
-    padding: 5px 20px;
+    position: relative;
+    top: 0;
+    right: 0;
 }
 
 .input {
     display: inline-block;
-    width: 95%;
+    width: 97%;
 }
 
 .small-input {
-    width: 45%;
+    display: inline-block;
+    width: 48%;
 }
 
-.dropdown-with-button {
-    width: 85%;
+.small-input paper-dropdown-menu {
+    width: 70%;
+}
+
+.small-input paper-input {
+    width: 90%;
 }

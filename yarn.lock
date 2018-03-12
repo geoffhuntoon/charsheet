@@ -198,6 +198,15 @@
     "@polymer/paper-styles" "^3.0.0-pre.10"
     "@polymer/polymer" "^3.0.0-pre.10"
 
+"@polymer/paper-dialog-scrollable@^3.0.0-pre.11":
+  version "3.0.0-pre.11"
+  resolved "https://registry.yarnpkg.com/@polymer/paper-dialog-scrollable/-/paper-dialog-scrollable-3.0.0-pre.11.tgz#b9209a83a5f85e6e8cac4e9dad972a8b19ccad94"
+  dependencies:
+    "@polymer/iron-flex-layout" "^3.0.0-pre.10"
+    "@polymer/paper-dialog-behavior" "^3.0.0-pre.10"
+    "@polymer/paper-styles" "^3.0.0-pre.10"
+    "@polymer/polymer" "^3.0.0-pre.10"
+
 "@polymer/paper-dialog@^3.0.0-pre.10":
   version "3.0.0-pre.10"
   resolved "https://registry.yarnpkg.com/@polymer/paper-dialog/-/paper-dialog-3.0.0-pre.10.tgz#42ae17c48d620f752a3b0517a952637ed21a3890"
