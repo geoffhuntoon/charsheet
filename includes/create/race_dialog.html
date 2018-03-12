@@ -1,4 +1,4 @@
-<paper-dialog id="race-dialog" with-backdrop always-on-top>
+<paper-dialog id="race-dialog" with-backdrop always-on-top scroll-action="lock">
   <h1 id="race-title"></h1>
 
   <dom-bind>
@@ -18,17 +18,17 @@
       </paper-tabs>
 
       <iron-pages id="race-pages" attr-for-selected="class" selected="{{selected}}">
-        <div class="general" style="height: 200px; overflow: auto;"></div>
-        <div class="personality" style="height: 200px; overflow: auto;"></div>
-        <div class="physicality" style="height: 200px; overflow: auto;"></div>
-        <div class="relations" style="height: 200px; overflow: auto;"></div>
-        <div class="alignment" style="height: 200px; overflow: auto;"></div>
-        <div class="lands" style="height: 200px; overflow: auto;"></div>
-        <div class="religion" style="height: 200px; overflow: auto;"></div>
-        <div class="language" style="height: 200px; overflow: auto;"></div>
-        <div class="names" style="height: 200px; overflow: auto;"></div>
-        <div class="adventurers" style="height: 200px; overflow: auto;"></div>
-        <div class="racial_traits" style="height: 200px; overflow: auto;"></div>
+        <div class="general"></div>
+        <div class="personality"></div>
+        <div class="physicality"></div>
+        <div class="relations"></div>
+        <div class="alignment"></div>
+        <div class="lands"></div>
+        <div class="religion"></div>
+        <div class="language"></div>
+        <div class="names"></div>
+        <div class="adventurers"></div>
+        <div class="racial_traits"></div>
       </iron-pages>
     </template>
   </dom-bind>
