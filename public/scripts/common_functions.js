@@ -26,29 +26,79 @@ function rolld100() {
     return Math.ceil(Math.random() * 100);
 }
 
-function rollStats() {
+function rollStat() {
     let stats = [];
-    for(let i = 0; i < 6; i++) {
-        let first = rolld6();
-        let second = rolld6();
-        let third = rolld6();
-        let fourth = rolld6();
-        let min = Math.min(first, second, third, fourth);
-        stats.push(first + second + third + fourth - min);
-    }
-    return stats;
+    stats.push(rolld6());
+    stats.push(rolld6());
+    stats.push(rolld6());
+    stats.push(rolld6());
+    stats.sort();
+    return stats.slice(1).reduce(function (total, num) {
+        return total + num;
+    });
 }
 
-function rollBeefyStats() {
+function roll5dStat() {
     let stats = [];
-    for (let i = 0; i < 7; i++) {
-        let first = rolld6();
-        let second = rolld6();
-        let third = rolld6();
-        let fourth = rolld6();
-        let fifth = rolld6();
-        let min = Math.min(first, second, third, fourth, fifth);
-        stats.push(first + second + third + fourth + fifth - min);
-    }
-    return stats;
+    stats.push(rolld6());
+    stats.push(rolld6());
+    stats.push(rolld6());
+    stats.push(rolld6());
+    stats.push(rolld6());
+    stats.sort();
+    return stats.slice(2).reduce(function (total, num) {
+        return total + num;
+    });
+}
+
+function rollBeefyStat() {
+    let stats = [];
+    stats.push(rolld6());
+    stats.push(rolld6());
+    stats.push(rolld6());
+    stats.push(rolld6());
+    stats.push(rolld6());
+    stats.sort();
+    return stats.slice(1).reduce(function (total, num) {
+        return total + num;
+    });
+}
+
+function rollAndPlaceStat(selector) {
+    $('#' + selector + '-score').val(rollStat());
+}
+
+function rollAndPlaceAllStats() {
+    rollAndPlaceStat('strength');
+    rollAndPlaceStat('dexterity');
+    rollAndPlaceStat('constitution');
+    rollAndPlaceStat('intelligence');
+    rollAndPlaceStat('wisdom');
+    rollAndPlaceStat('charisma');
+}
+
+function rollAndPlace5dStat(selector) {
+    $('#' + selector + '-score').val(roll5dStat());
+}
+
+function rollAndPlaceAll5dStats() {
+    rollAndPlace5dStat('strength');
+    rollAndPlace5dStat('dexterity');
+    rollAndPlace5dStat('constitution');
+    rollAndPlace5dStat('intelligence');
+    rollAndPlace5dStat('wisdom');
+    rollAndPlace5dStat('charisma');
+}
+
+function rollAndPlaceBeefyStat(selector) {
+    $('#' + selector + '-score').val(rollBeefyStat());
+}
+
+function rollAndPlaceAllBeefyStats() {
+    rollAndPlaceBeefyStat('strength');
+    rollAndPlaceBeefyStat('dexterity');
+    rollAndPlaceBeefyStat('constitution');
+    rollAndPlaceBeefyStat('intelligence');
+    rollAndPlaceBeefyStat('wisdom');
+    rollAndPlaceBeefyStat('charisma');
 }
