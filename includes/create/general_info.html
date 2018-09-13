@@ -97,7 +97,9 @@
       <br/>
       <hr/>
 
-      <h2>Ability Scores</h2>
+      <h2>Ability Scores
+        <paper-icon-button class="title-button" icon="icons:help" noink onclick="_abilityDialog()"></paper-icon-button>
+      </h2>
       <div class="column-container">
         <div class="short-column">
           <p><b>Strength:</b>
@@ -162,3 +164,16 @@
 </div>
 
 <script src="/public/scripts/dialog_functions.js"></script>
+
+<script>
+
+  $(document).ready(() => {
+      document.getElementById('race').addEventListener('value-changed', function() {
+          updateStatsByRace();
+      });
+  });
+
+
+
+
+</script>

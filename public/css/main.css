@@ -29,7 +29,7 @@ h1 {
 
 h2 {
     padding: 10px 0 0 20px;
-    margin: 10px 0 0 0;
+    margin: 10px;
 }
 
 table {
@@ -73,7 +73,7 @@ paper-dialog {
 }
 
 paper-dialog-scrollable {
-    height: 300px;
+    height: 250px;
 }
 
 paper-dropdown-menu, paper-input {
@@ -121,18 +121,12 @@ paper-tabs {
     color: black;
 }
 
-
-
-
-
-.small-listbox {
-    height: 150px;
+.title-button {
+    position: relative;
+    top: -10px;
 }
 
-
-
-
-
+/* Dialog styles */
 .dialog-tabs {
     width: 90%;
     margin: 0 auto;
@@ -206,4 +200,8 @@ paper-tabs {
 
 .small-input paper-input {
     width: 90%;
+}
+
+.small-listbox {
+    height: 150px;
 }

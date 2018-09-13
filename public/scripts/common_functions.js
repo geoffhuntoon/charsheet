@@ -102,3 +102,40 @@ function rollAndPlaceAllBeefyStats() {
     rollAndPlaceBeefyStat('wisdom');
     rollAndPlaceBeefyStat('charisma');
 }
+
+function updateStatsByRace() {
+    let race = document.getElementById('race').value;
+    if (race !== undefined) {
+        let str = document.getElementById('strength-score');
+        let dex = document.getElementById('dexterity-score');
+        let con = document.getElementById('constitution-score');
+        let int = document.getElementById('intelligence-score');
+        let cha = document.getElementById('charisma-score');
+
+        switch (race) {
+            case 'Dwarf':
+                if (con.value !== '') con.value = parseInt(con.value) + 2;
+                if (cha.value !== '') cha.value -= 2;
+                break;
+            case 'Elf':
+                if (dex.value !== '') dex.value = parseInt(dex.value) + 2;
+                if (con.value !== '') con.value -= 2;
+                break;
+            case 'Gnome':
+                if (str.value !== '') str.value -= 2;
+                if (con.value !== '') con.value = parseInt(con.value) + 2;
+                break;
+            case 'Half-Orc':
+                if (str.value !== '') str.value = parseInt(str.value) + 2;
+                if (int.value !== '') int.value -= 2;
+                if (cha.value !== '') cha.value -= 2;
+                break;
+            case 'Halfling':
+                if (str.value !== '') str.value -= 2;
+                if (dex.value !== '') dex.value = parseInt(dex.value) + 2;
+                break;
+            default:
+                break;
+        }
+    }
+}

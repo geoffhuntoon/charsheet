@@ -1,0 +1,971 @@
+<paper-dialog id="ability-dialog" with-backdrop always-on-top>
+  <h1>Abilities</h1>
+
+  <dom-bind>
+    <template>
+      <paper-tabs id="ability-tabs" class="dialog-tabs" attr-for-selected="name" selected="{{selected}}">
+        <paper-tab name="general">General</paper-tab>
+        <paper-tab name="ability-scores">Scores</paper-tab>
+        <paper-tab name="ability-modifiers">Modifiers/Bonuses</paper-tab>
+        <paper-tab name="strength-info">Strength</paper-tab>
+        <paper-tab name="dexterity-info">Dexterity</paper-tab>
+        <paper-tab name="constitution-info">Constitution</paper-tab>
+        <paper-tab name="intelligence-info">Intelligence</paper-tab>
+        <paper-tab name="wisdom-info">Wisdom</paper-tab>
+        <paper-tab name="charisma-info">Charisma</paper-tab>
+        <paper-tab name="example-generation">Example</paper-tab>
+        <paper-tab name="changing-scores">Changing Scores</paper-tab>
+        <paper-tab name="additional-info">Roleplaying</paper-tab>
+      </paper-tabs>
+
+      <iron-pages id="ability-pages" attr-for-selected="class" selected="{{selected}}">
+        <div class="general">
+          <h2>General Information</h2>
+          <paper-dialog-scrollable dialog-element="ability-dialog">
+            <p>Just about every die roll you make is going to be modified based on your character's abilities. A tough
+              character has a better chance of surviving a wyvern's poison sting. A perceptive character is more likely
+              to notice bugbears sneaking up from behind. A stupid character is not as likely to find a secret door that
+              leads to hidden treasure chamber. YOur ability scores tell you what your modifiers are for rolls such as
+              these.
+            </p>
+            <p>Your character has six abilities: Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma.
+              Each of your character's above-average abilities gives you a benefit on certain die rolls, and each
+              below-average ability gives you a disadvantage on other die rolls. When creating your character, you roll
+              your scores randomly, assign them to the abilities as you like, and raise and lower them according to the
+              character's race. Later, you can increase them as your character advances in experience.
+            </p>
+          </paper-dialog-scrollable>
+        </div>
+
+        <div class="ability-scores">
+          <h2>Ability Scores</h2>
+          <paper-dialog-scrollable dialog-element="ability-dialog">
+            <p>To create an ability score for your character, roll four six-sided dice (4d6). Disregard the lowest die
+              roll and total the three highest ones. The result is a number between 3 (horrible) and 18 (tremendous).
+              The average ability score for a typical commoner is 10 or 11, but your character is not typical. The most
+              common ability scores for player characters (PCs) are 12 and 13. (That's right, the average player
+              character is above average.)
+            </p>
+            <p>Make this roll six times, recording each result. Once you have six scores, assign each score to one of
+              the six abilities. At this step, you need to know what kind of person your character is going to be,
+              including his or her race and class, in order to know how best to distribute the ability scores. Choosing
+              a race other than human or half-elf causes some of these ability scores to change.
+            </p>
+            <h2>Ability Modifiers</h2>
+            <p>Each ability, after changes made because of race, has a modifier ranging from -5 to +5. The table on the
+              next tab shows the modifier for each score. It also shows bonus spells, which you'll need to know about if
+              your character is a spellcaster.
+            </p>
+            <p>The modifier is the number you apply to the die roll when your character tries to do something related to
+              that ability. For instance, you apply your character's Strength modifier to your roll when he or she tries
+              to hit something with a sword. YOu also use the modifier with some numbers that aren't die rolls - for
+              example, you apply your character's Dexterity modifier to his or her Armor Class (AC). A positive modifier
+              is called a bonus, and a negative modifier is called a penalty.
+            </p>
+            <h2>Abilities and Spellcasters</h2>
+            <p>The ability that governs bonus spells depends on what type of spellcaster your character is: Intelligence
+              for wizards; Wisdom for clerics, druids, paladins, and rangers; or Charisma for sorcerers and bards. In
+              addition to having a high ability score, a spellcaster must be of high enough class level to be able to
+              cast spells of a given spell level. For instance, the wizard Mialee has an Intelligence score of 15, so
+              she's smart enough to get one bonus 1st-level spell and one bonus 2nd-level spell. (She will not actually
+              get the bonus 2nd-level spell until she is a 3rd-level wizard, since that's the minimum level a wizard
+              must be to cast 2nd-level spells.)
+            </p>
+            <p>If your character's ability score is 9 or lower, you can't cast spells tied to that ability. For example,
+              if Mialee's Intelligence score dropped to 9 because of a poison that reduces intellect, she would not be
+              able to cast even her simplest spells until cured.
+            </p>
+            <h2>Rerolling</h2>
+            <p>If your scores are too low, you may scrap them and roll all six scores again. Your scores are considered
+              too low if the sum of your modifiers (before adjustments because of race) is 0 or lower, or if your
+              highest score is 13 or lower.
+            </p>
+          </paper-dialog-scrollable>
+        </div>
+
+        <div class="ability-modifiers">
+          <h2>Ability Modifiers and Bonus Spells</h2>
+          <paper-dialog-scrollable dialog-element="ability-dialog">
+            <table>
+              <tr>
+                <th>Score</th>
+                <th>Modifier</th>
+                <th>Bonus Spell Level: 0</th>
+                <th>1st</th>
+                <th>2nd</th>
+                <th>3rd</th>
+                <th>4th</th>
+                <th>5th</th>
+                <th>6th</th>
+                <th>7th</th>
+                <th>8th</th>
+                <th>9th</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>-5</td>
+                <td colspan="10" style="text-align: center;">---Can't cast spells tied to this ability---</td>
+              </tr>
+              <tr>
+                <td>2-3</td>
+                <td>-4</td>
+                <td colspan="10" style="text-align: center;">---Can't cast spells tied to this ability---</td>
+              </tr>
+              <tr>
+                <td>4-5</td>
+                <td>-3</td>
+                <td colspan="10" style="text-align: center;">---Can't cast spells tied to this ability---</td>
+              </tr>
+              <tr>
+                <td>6-7</td>
+                <td>-2</td>
+                <td colspan="10" style="text-align: center;">---Can't cast spells tied to this ability---</td>
+              </tr>
+              <tr>
+                <td>8-9</td>
+                <td>-1</td>
+                <td colspan="10" style="text-align: center;">---Can't cast spells tied to this ability---</td>
+              </tr>
+              <tr>
+                <td>10-11</td>
+                <td>0</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+              </tr>
+              <tr>
+                <td>12-13</td>
+                <td>+1</td>
+                <td>---</td>
+                <td>1</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+              </tr>
+              <tr>
+                <td>14-15</td>
+                <td>+2</td>
+                <td>---</td>
+                <td>1</td>
+                <td>1</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+              </tr>
+              <tr>
+                <td>16-17</td>
+                <td>+3</td>
+                <td>---</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+              </tr>
+              <tr>
+                <td>18-19</td>
+                <td>+4</td>
+                <td>---</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+              </tr>
+              <tr>
+                <td>20-21</td>
+                <td>+5</td>
+                <td>---</td>
+                <td>2</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+              </tr>
+              <tr>
+                <td>22-23</td>
+                <td>+6</td>
+                <td>---</td>
+                <td>2</td>
+                <td>2</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+              </tr>
+              <tr>
+                <td>24-25</td>
+                <td>+7</td>
+                <td>---</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>---</td>
+                <td>---</td>
+              </tr>
+              <tr>
+                <td>26-27</td>
+                <td>+8</td>
+                <td>---</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>---</td>
+              </tr>
+              <tr>
+                <td>28-29</td>
+                <td>+9</td>
+                <td>---</td>
+                <td>3</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>30-31</td>
+                <td>+10</td>
+                <td>---</td>
+                <td>3</td>
+                <td>3</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td colspan="12">etc....</td>
+              </tr>
+            </table>
+          </paper-dialog-scrollable>
+        </div>
+        <div class="strength-info">
+          <h2>Strength</h2>
+          <paper-dialog-scrollable dialog-element="ability-dialog">
+            <p>Strength measures your character's muscle and physical power. This ability is especially important for
+              fighters, barbarians, rangers, and monks because it helps them prevail in combat. Strength also limits the
+              amount of equipment your character can carry. You apply your character's Strength modifier to:
+            </p>
+            <ul>
+              <li>Melee attack rolls.</li>
+              <li>Damage rolls when using a melee weapon or a thrown weapon (including a sling). (<i>Exceptions:</i>
+                Off-hand attacks receive only one-half the character's Strength bonus, while two-handed attacks receive
+                one and a half times the Strength bonus. A Strength penalty, but not a bonus, applies to attacks made
+                with a bow that is not a composite bow.)
+              </li>
+              <li>Climb, Jump, and Swim checks. These are the skills that have Strength as their key ability.</li>
+              <li>Strength checks (for breaking down doors and the like).</li>
+            </ul>
+
+            <br/><hr/><br/>
+
+            <h2>Average Strength Scores</h2>
+            <table>
+              <tr>
+                <th>Example Race or Creature Kind</th>
+                <th>Average Strength</th>
+                <th>Average Modifier</th>
+              </tr>
+              <tr>
+                <td>Allip, Shadow, Will-o'-Wisp</td>
+                <td>---</td>
+                <td>---</td>
+              </tr>
+              <tr>
+                <td>Lantern Archon, Bat, Toad</td>
+                <td>1</td>
+                <td>-5</td>
+              </tr>
+              <tr>
+                <td>Rat Swarm</td>
+                <td>2</td>
+                <td>-4</td>
+              </tr>
+              <tr>
+                <td>Stirge, Monkey, Tiny Monstrous Spider</td>
+                <td>3</td>
+                <td>-4</td>
+              </tr>
+              <tr>
+                <td>Grig, Small Monstrous Centipede</td>
+                <td>4-5</td>
+                <td>-3</td>
+              </tr>
+              <tr>
+                <td>Hawk, Cockatrice, Pixie</td>
+                <td>6-7</td>
+                <td>-2</td>
+              </tr>
+              <tr>
+                <td>Quasit, Badger</td>
+                <td>8-9</td>
+                <td>-1</td>
+              </tr>
+              <tr>
+                <td>Human, Beholder, Dire Rat</td>
+                <td>10-11</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>Mind Flayer, Dog, Pony, Ghoul</td>
+                <td>12-13</td>
+                <td>+1</td>
+              </tr>
+              <tr>
+                <td>Gnoll, Dire Badger, Baboon, Manta Ray</td>
+                <td>14-15</td>
+                <td>+2</td>
+              </tr>
+              <tr>
+                <td>Black Pudding, Choker, Large Shark</td>
+                <td>16-17</td>
+                <td>+3</td>
+              </tr>
+              <tr>
+                <td>Centaur, Displacer Beast, Minotaur</td>
+                <td>18-19</td>
+                <td>+4</td>
+              </tr>
+              <tr>
+                <td>Ape, Ogre, Flesh Golem, Gorgon</td>
+                <td>20-21</td>
+                <td>+5</td>
+              </tr>
+              <tr>
+                <td>Fire Giant, Triceratops, Elephant</td>
+                <td>30-31</td>
+                <td>+10</td>
+              </tr>
+              <tr>
+                <td>Great Wyrm Gold Dragon</td>
+                <td>46-47</td>
+                <td>+18</td>
+              </tr>
+            </table>
+          </paper-dialog-scrollable>
+        </div>
+
+        <div class="dexterity-info">
+          <h2>Dexterity</h2>
+          <paper-dialog-scrollable dialog-element="ability-dialog">
+            <p>Dexterity measures hand-eye coordination, agility, reflexes, and balance. This ability is the most
+              important one for rogues, but it's also high on the list for characters who typically wear light or medium
+              armor (rangers and barbarians) or no armor at all (monks, wizards, and sorcerers), and for anyone who
+              wants to be a skilled archer. You apply your character's Dexterity modifier to:
+            </p>
+            <ul>
+              <li>Ranged attack rolls, including those for attacks made with bows, crossbows, throwing axes, and other
+                ranged weapons.
+              </li>
+              <li>Armor Class (AC), provided that the character can react the the attack.</li>
+              <li>Reflex saving throws, for avoiding fireballs and other attacks that you can escape by moving quickly.
+              </li>
+              <li>Balance, Escape Artist, Hide, Move Silently, Open Lock, Ride, Sleight of Hand, Tumble, and Use Rope
+                checks. These are the skills that have Dexterity as their key ability.
+              </li>
+            </ul>
+
+            <br/><hr/><br/>
+
+            <h2>Average Dexterity Scores</h2>
+            <table>
+              <tr>
+                <th>Example Race or Creature Kind</th>
+                <th>Average Dexterity</th>
+                <th>Average Modifier</th>
+              </tr>
+              <tr>
+                <td>Shrieker (fungus)</td>
+                <td>---</td>
+                <td>---</td>
+              </tr>
+              <tr>
+                <td>Gelatinous Cube (ooze)</td>
+                <td>1</td>
+                <td>-5</td>
+              </tr>
+              <tr>
+                <td>Colossal Animated Object</td>
+                <td>4-5</td>
+                <td>-3</td>
+              </tr>
+              <tr>
+                <td>Purple Worm, Ogre Zombie</td>
+                <td>6-7</td>
+                <td>-2</td>
+              </tr>
+              <tr>
+                <td>Ogre, Basilisk, Fire Giant, Tendriculos</td>
+                <td>8-9</td>
+                <td>-1</td>
+              </tr>
+              <tr>
+                <td>Human, Triton, Boar, Giant Fire Beetle</td>
+                <td>10-11</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>Bugbear, Lammasu, Hobgoblin</td>
+                <td>12-13</td>
+                <td>+1</td>
+              </tr>
+              <tr>
+                <td>Displacer Beast, Hieracosphinx</td>
+                <td>14-15</td>
+                <td>+2</td>
+              </tr>
+              <tr>
+                <td>Blink Dog, Wraith, Lion, Octopus</td>
+                <td>16-17</td>
+                <td>+3</td>
+              </tr>
+              <tr>
+                <td>Astral Deva (angel), Ethereal Filcher</td>
+                <td>18-19</td>
+                <td>+4</td>
+              </tr>
+              <tr>
+                <td>Arrowhawk, Bone Devil</td>
+                <td>20-21</td>
+                <td>+5</td>
+              </tr>
+              <tr>
+                <td>Elder Air Elemental</td>
+                <td>32-33</td>
+                <td>+11</td>
+              </tr>
+            </table>
+          </paper-dialog-scrollable>
+        </div>
+
+        <div class="constitution-info">
+          <h2>Constitution</h2>
+          <paper-dialog-scrollable dialog-element="ability-dialog">
+            <p>Constitution represents your character's health and stamina. A Constitution bonus increases a character's
+              hit points, so the ability is important for all classes. You apply your character's Constitution modifier
+              to:
+            </p>
+            <ul>
+              <li>Each roll of a Hit Die (though a penalty can never drop a result below 1 - that is, a character always
+                gains at least 1 hit point each time he or she advances in level).
+              </li>
+              <li>Fortitude saving throws, for resisting poison and similar threats.</li>
+              <li>Concentration checks. Concentration is a skill, important to spellcasters, that has Constitution as
+                its key ability.
+              </li>
+            </ul>
+            <p>If a character's Constitution score changes enough to alter his or her Constitution modifier, the
+              character's hit points also increase or decrease accordingly.
+            </p>
+
+            <br/><hr/><br/>
+
+            <h2>Average Constitution Scores</h2>
+            <table>
+              <tr>
+                <th>Example Race or Creature Kind</th>
+                <th>Average Constitution</th>
+                <th>Average Modifier</th>
+              </tr>
+              <tr>
+                <td>Ghoul, Mummy, Shadow</td>
+                <td>---</td>
+                <td>---</td>
+              </tr>
+              <tr>
+                <td>Centipede Swarm, Locust Swarm</td>
+                <td>8-9</td>
+                <td>-1</td>
+              </tr>
+              <tr>
+                <td>Human, Imp, Dire Weasel, Grick</td>
+                <td>10-11</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>Rust Monster, Medusa, Otyugh, Nymph</td>
+                <td>12-13</td>
+                <td>+1</td>
+              </tr>
+              <tr>
+                <td>Light Horse, Merfolk, Troglodyte</td>
+                <td>14-15</td>
+                <td>+2</td>
+              </tr>
+              <tr>
+                <td>Tiger, Chimera, Assassin Vine</td>
+                <td>16-17</td>
+                <td>+3</td>
+              </tr>
+              <tr>
+                <td>Polar Bear, Gargoyle, Umber Hulk</td>
+                <td>18-19</td>
+                <td>+4</td>
+              </tr>
+              <tr>
+                <td>Elephant, Aboleth, Tyrannosaurus</td>
+                <td>20-21</td>
+                <td>+5</td>
+              </tr>
+              <tr>
+                <td>The Tarrasque</td>
+                <td>35</td>
+                <td>+12</td>
+              </tr>
+            </table>
+          </paper-dialog-scrollable>
+        </div>
+
+        <div class="intelligence-info">
+          <h2>Intelligence</h2>
+          <paper-dialog-scrollable dialog-element="ability-dialog">
+            <p>Intelligence determines how well your character learns and reasons. This ability is important for wizards
+              because it affects how many spells they can cast, how hard their spells are to resist, and how powerful
+              their spells can be. It's also important for any character who wants to have a wide assortment of skills.
+              You apply your character's Intelligence modifier to:
+            </p>
+            <ul>
+              <li>The number of languages your character knows at the start of the game.</li>
+              <li>The number of skill points gained each level. (Your character always gets at least 1 skill point per
+                level.)
+              </li>
+              <li>Appraise, Craft, Decipher Script, Disable Device, Forgery, Knowledge, Search, and Spellcraft checks.
+                These are the skills that have Intelligence as their key ability.
+              </li>
+            </ul>
+            <p>A wizard gains bonus spells based on her Intelligence score. The minimum Intelligence score needed to
+              cast a wizard spell is 10 + the spell's level.
+            </p>
+            <p>An animal has an Intelligence score of 1 or 2. A creature of humanlike intelligence has a score of at
+              least 3.
+            </p>
+
+            <br/><hr/><br/>
+
+            <h2>Average Intelligence Scores</h2>
+            <table>
+              <tr>
+                <th>Example Race or Creature Kind</th>
+                <th>Average Intelligence</th>
+                <th>Average Modifier</th>
+              </tr>
+              <tr>
+                <td>Zombie, Golem, Ochre Jelly</td>
+                <td>---</td>
+                <td>---</td>
+              </tr>
+              <tr>
+                <td>Carrion Crawler, Purple Worm, Camel</td>
+                <td>1</td>
+                <td>-5</td>
+              </tr>
+              <tr>
+                <td>Tiger, Hydra, Dog, Horse</td>
+                <td>2</td>
+                <td>-4</td>
+              </tr>
+              <tr>
+                <td>Gray Render, Tendriculos, Rast</td>
+                <td>3</td>
+                <td>-4</td>
+              </tr>
+              <tr>
+                <td>Otyugh, Griffon, Displacer Beast</td>
+                <td>4-5</td>
+                <td>-3</td>
+              </tr>
+              <tr>
+                <td>Troll, Hell Hound, Ogre, Yrthak</td>
+                <td>6-7</td>
+                <td>-2</td>
+              </tr>
+              <tr>
+                <td>Troglodyte, Centaur, Gnoll</td>
+                <td>8-9</td>
+                <td>-1</td>
+              </tr>
+              <tr>
+                <td>Human, Bugbear, Wight, Night Hag</td>
+                <td>10-11</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>Dragon Turtle, Cloud Giant, Lamia</td>
+                <td>12-13</td>
+                <td>+1</td>
+              </tr>
+              <tr>
+                <td>Invisible Stalker, Wraith, Will-o'-Wisp</td>
+                <td>14-15</td>
+                <td>+2</td>
+              </tr>
+              <tr>
+                <td>Beholder, Succubus, Trumpet Archon</td>
+                <td>16-17</td>
+                <td>+3</td>
+              </tr>
+              <tr>
+                <td>Mind Flayer, Death Slaad, Nightwing</td>
+                <td>18-19</td>
+                <td>+4</td>
+              </tr>
+              <tr>
+                <td>Kraken, Titan, Nightcrawler</td>
+                <td>20-21</td>
+                <td>+5</td>
+              </tr>
+              <tr>
+                <td>Great Wyrm Gold Dragon</td>
+                <td>32-33</td>
+                <td>+11</td>
+              </tr>
+            </table>
+          </paper-dialog-scrollable>
+        </div>
+
+        <div class="wisdom-info">
+          <h2>Wisdom</h2>
+          <paper-dialog-scrollable dialog-element="ability-dialog">
+            <p>Wisdom describes a character's willpower, common sense, perception, and intuition. While Intelligence
+              represents one's ability to analyze information, Wisdom represents being in tune with and aware of one's
+              surroundings. An "absentminded professor" has low Wisdom and high Intelligence. A simpleton (low
+              Intelligence) might still have great insight (high Wisdom). Wisdom is the most important ability for
+              clerics and druids, and it is also important for paladins and rangers. If you want your character to have
+              acute senses, put a high score in Wisdom. Every creature has a Wisdom score. You apply your character's
+              Wisdom modifier to:
+            </p>
+            <ul>
+              <li>Will saving throws (for negating the effect of charm person and other spells).</li>
+              <li>Heal, Listen, Profession, Sense Motive, Spot, and Survival checks. These are the skills that have
+                Wisdom as their key ability.
+              </li>
+            </ul>
+            <p>Clerics, druids, paladins, and rangers get bonus spells based on their Wisdom scores. The minimum Wisdom
+              score needed to cast a cleric, druid, paladin, or ranger spell is 10 + the spell's level.
+            </p>
+
+            <br/><hr/><br/>
+
+            <h2>Average Wisdom Scores</h2>
+            <table>
+              <tr>
+                <th>Example Race or Creature Kind</th>
+                <th>Average Wisdom</th>
+                <th>Average Modifier</th>
+              </tr>
+              <tr>
+                <td>Gelatinous Cube (ooze), Animated Object</td>
+                <td>1</td>
+                <td>-5</td>
+              </tr>
+              <tr>
+                <td>Shrieker (fungus)</td>
+                <td>2</td>
+                <td>-4</td>
+              </tr>
+              <tr>
+                <td>Red Slaad, Githyanki</td>
+                <td>6-7</td>
+                <td>-2</td>
+              </tr>
+              <tr>
+                <td>Purple Worm, Grimlock, Troll</td>
+                <td>8-9</td>
+                <td>-1</td>
+              </tr>
+              <tr>
+                <td>Human, Lizardfolk, Phantom Fungus</td>
+                <td>10-11</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>Owlbear, Hyena, Shadow, Remorhaz</td>
+                <td>12-13</td>
+                <td>+1</td>
+              </tr>
+              <tr>
+                <td>Wraith, Owl, Giant Praying Mantis</td>
+                <td>14-15</td>
+                <td>+2</td>
+              </tr>
+              <tr>
+                <td>Devourer, Lillend, Androsphinx</td>
+                <td>16-17</td>
+                <td>+3</td>
+              </tr>
+              <tr>
+                <td>Couatl, Erinyes Devil, Guardian Naga</td>
+                <td>18-19</td>
+                <td>+4</td>
+              </tr>
+              <tr>
+                <td>Unicorn, Storm Giant</td>
+                <td>20-21</td>
+                <td>+5</td>
+              </tr>
+              <tr>
+                <td>Great Wyrm Gold Dragon</td>
+                <td>32-33</td>
+                <td>+11</td>
+              </tr>
+            </table>
+          </paper-dialog-scrollable>
+        </div>
+
+        <div class="charisma-info">
+          <h2>Charisma</h2>
+          <paper-dialog-scrollable dialog-element="ability-dialog">
+            <p>Charisma measures a character's force of personality, persuasiveness, personal magnetism, ability to
+              lead, and physical attractiveness. This ability represents actual strength of personality, not merely how
+              one is perceived by others in a social setting. Charisma is most important for paladins, sorcerers, and
+              bards. It is also important for clerics, since it affects their ability to turn undead. Every creature has
+              a Charisma score. You apply your character's Charisma modifier to:
+            </p>
+            <ul>
+              <li>Bluff, Diplomacy, Disguise, Gather Information, Handle Animal, Intimidate, Perform, and Use Magic
+                Device checks. These are the skills that have Charisma as their key ability.
+              </li>
+              <li>Checks that represent attempts to influence others.</li>
+              <li>Turning checks for clerics and paladins attempting to turn zombies, vampires, and other undead.</li>
+            </ul>
+            <p>Sorcerers and bards get bonus spells based on their Charisma scores. The minimum Charisma score needed to
+              cast a sorcerer or bard spell is 10 + the spell's level.
+            </p>
+
+            <br/><hr/><br/>
+
+            <h2>Average Charisma Scores</h2>
+            <table>
+              <tr>
+                <th>Example Race or Creature Kind</th>
+                <th>Average Charisma</th>
+                <th>Average Modifier</th>
+              </tr>
+              <tr>
+                <td>Zombie, Golem, Shrieker (fungus)</td>
+                <td>1</td>
+                <td>-5</td>
+              </tr>
+              <tr>
+                <td>Spider, Crocodile, Lizard, Rhinoceros</td>
+                <td>2</td>
+                <td>-4</td>
+              </tr>
+              <tr>
+                <td>Tendriculos, Octopus</td>
+                <td>3</td>
+                <td>-4</td>
+              </tr>
+              <tr>
+                <td>Dire Rat, Weasel, Chuul, Donkey</td>
+                <td>4-5</td>
+                <td>-3</td>
+              </tr>
+              <tr>
+                <td>Badger, Troll, Giant Fire Beetle, Bear</td>
+                <td>6-7</td>
+                <td>-2</td>
+              </tr>
+              <tr>
+                <td>Gnoll, Dire Boar, Manticore, Gorgon</td>
+                <td>8-9</td>
+                <td>-1</td>
+              </tr>
+              <tr>
+                <td>Human, Wolverine, Dretch (demon)</td>
+                <td>10-11</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>Treant, Roper, Doppelganger, Night Hag</td>
+                <td>12-13</td>
+                <td>+1</td>
+              </tr>
+              <tr>
+                <td>Storm Giant, Barghest, Medusa</td>
+                <td>14-15</td>
+                <td>+2</td>
+              </tr>
+              <tr>
+                <td>Ogre Mage, Pixie, Harpy, Achaierai</td>
+                <td>16-17</td>
+                <td>+3</td>
+              </tr>
+              <tr>
+                <td>Greater Barghest, Nixie</td>
+                <td>18-19</td>
+                <td>+4</td>
+              </tr>
+              <tr>
+                <td>Astral Deva (angel), Kraken</td>
+                <td>20-21</td>
+                <td>+5</td>
+              </tr>
+              <tr>
+                <td>Great Wyrm Gold Dragon</td>
+                <td>32-33</td>
+                <td>+11</td>
+              </tr>
+            </table>
+          </paper-dialog-scrollable>
+        </div>
+
+        <div class="example-generation">
+          <h2>Example of Generating and Assigning Ability Scores</h2>
+          <paper-dialog-scrollable dialog-element="ability-dialog">
+            <p>Monte wants to create a new character. He rolls four six-sided dice (4d6) and gets 5, 4, 4, and 1.
+              Ignoring the lowest roll, he records the result: 13. He rolls the dice five more times and gets these six
+              scores: 13, 10, 15, 12, 8, and 14. Monte decides to play a strong, tough dwarf fighter. Now he assigns his
+              scores to abilities.
+            </p>
+            <p>Strength gets the highest score, 15. His character has a +2 Strength bonus that will serve him well in
+              combat.
+            </p>
+            <p>Constitution gets the next highest score, 14. The dwarf's +2 racial bonus to Constitution improves his
+              Constitution score to 16, which gives him a +3 modifier. This bonus gives the character more hit points
+              and better Fortitude saving throws.
+            </p>
+            <p>Monte puts his lowest score, 8, into Charisma. The dwarf's -2 racial penalty to Charisma reduces his
+              Charisma score to 6, for a -2 penalty.
+            </p>
+            <p>Monte has two bonus-range scores left (13 and 12), plus an average score (10). Dexterity gets the 13 (+1
+              bonus), which helps with ranged weapon attacks and with Reflex saving throws. (Monte's also thinking
+              ahead. A Dexterity score of 13 qualifies his character for the Dodge feat.)
+            </p>
+            <p>Wisdom gets the 12 (+1 bonus). The Wisdom bonus helps with perception skills, such as Spot and Listen, as
+              well as with Will saving throws.
+            </p>
+            <p>Intelligence gets the 10 (no bonus or penalty). An average Intelligence isn't bad for a fighter.</p>
+          </paper-dialog-scrollable>
+        </div>
+
+        <div class="changing-scores">
+          <h2>Changing Ability Scores</h2>
+          <paper-dialog-scrollable dialog-element="ability-dialog">
+            <p>Over time, the ability scores your character starts with can change. Ability scores can increase with no
+              limit. Points at which ability changes occur include the following:
+            </p>
+            <ul>
+              <li>Add 1 point to any score upon attaining 4th level and at every fourth level your character attains
+                thereafter (8th, 12th, 16th, and 20th level).
+              </li>
+              <li>Many spells and magical effects temporarily increase or decrease ability scores. The <i>ray of
+                enfeeblement</i> spell reduces a creature's Strength, and the <i>bull's strength</i> spell increases it.
+                Sometimes a spell hampers a character, reducing his or her ability score. A character trapped by an
+                <i>entangle</i> spell, for example, acts as if his or her Dexterity were 4 points lower than it really
+                is.
+              </li>
+              <li>Several magic items improve ability scores as long as the character is using them. For example,
+                <i>gloves of Dexterity</i> improve the wearer's Dexterity score. (Magic items are described in the
+                <i>Dungeon Master's Guide</i>.) Note that a magic item of this type can't change an ability score by
+                more than +6.
+              </li>
+              <li>Some rare magic items can boost an ability score permanently, as can a <i>wish</i> spell. Such an
+                increase is called an inherent bonus. An ability score can't have an inherent bonus of more than +5.
+              </li>
+              <li>Poisons, diseases, and other effects can temporarily harm an ability (ability damage). Ability points
+                lost to damage return on their own at a rate of 1 point per day for each damaged ability.
+              </li>
+              <li>Some effects drain abilities, resulting in a permanent loss (ability drain). Points lost this way
+                don't return on their own, but they can be regained with spells, such as <i>restoration</i>.
+              </li>
+              <li>As a character ages, some ability scores go up and others go down.</li>
+            </ul>
+            <p>When an ability score changes, all attributes associated with that score change accordingly. For example,
+              when Mialee becomes a 4th-level wizard, she decides to increase her Intelligence score to 16. That score
+              gives her a 3rd-level bonus spell (which she'll pick up upon attaining 5th level, when she becomes able to
+              cast 3rd-level spells), and it also increases the number of skill points she gets per level from 4 to 5 (2
+              per level for her class, plus another 3 per level from her Intelligence bonus). As a new 4th-level
+              character, she can get the skill points immediately  after raising her Intelligence, so she'll get 5
+              points for attaining 4th level in the wizard class. She does not retroactively get additional points for
+              her previous levels (that is, skill points she would have gained if she had had an Intelligence score of
+              16 starting at 1st level).
+            </p>
+          </paper-dialog-scrollable>
+        </div>
+
+        <div class="additional-info">
+          <h2>Intelligence, Wisdom, and Charisma</h2>
+          <paper-dialog-scrollable dialog-element="ability-dialog">
+            <p>You can use your character's Intelligence, Wisdom, and Charisma scores to guide you in roleplaying your
+              character. Here is some background (just guidelines) about what these scores can mean.
+            </p>
+            <p>A smart character (one with high Intelligence) is curious, knowledgeable, and prone to using big words. A
+              character with a high Intelligence but low Wisdom may be smart but absentminded, or knowledgeable but
+              lacking in common sense. A character with high Intelligence but low Charisma may be a know-it-all or a
+              reclusive scholar. A smart character lacking in both Wisdom and Charisma may put her foot in her mouth
+              often.
+            </p>
+            <p>A character with low Intelligence mispronounces and misuses words, has trouble following directions, or
+              fails to get the joke.
+            </p>
+            <p>A character with high Wisdom may be sensible, serene, "in tune," alert, or centered. A character with
+              high Wisdom but low Intelligence may be aware, but simple. A character with high Wisdom but low Charisma
+              knows enough to speak carefully and may become an advisor (or "power behind the throne") rather than a
+              leader. The wise character lacking in both Intelligence and Charisma is uncouth and unsophisticated.
+            </p>
+            <p>A character with a low Wisdom score may be rash, imprudent, irresponsible, or "out of it."</p>
+            <p>A character with high Charisma may be attractive, striking, personable, and confident. A character with
+              high Charisma but low Intelligence can usually pass herself off as knowledgeable, until she meets a true
+              expert. A charismatic character with low Wisdom may be popular, but she doesn't know who her real friends
+              are. A charismatic character lacking in both Intelligence and Wisdom is likely to be shallow and unaware
+              of others' feelings.
+            </p>
+            <p>A character with low Charisma may be reserved, gruff, rude, fawning, or simply nondescript.</p>
+          </paper-dialog-scrollable>
+        </div>
+      </iron-pages>
+    </template>
+  </dom-bind>
+
+  <div class="buttons">
+    <paper-button class="nav-button" dialog-dismiss>Done</paper-button>
+  </div>
+</paper-dialog>

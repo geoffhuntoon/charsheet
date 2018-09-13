@@ -1,3 +1,17 @@
+function _abilityDialog() {
+    $.ajax({
+        url: '/includes/create/ability_dialog.html',
+        success: function (data) {
+            $('#general-dialog').html(data);
+            document.getElementById('ability-tabs').selected = 'general';
+            document.getElementById('ability-pages').selected = 'general';
+            document.getElementById('ability-dialog').open();
+        }
+    });
+}
+
+
+
 function _raceDialog() {
     let race = document.getElementById('race').selectedItemLabel;
     $.ajax({
